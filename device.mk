@@ -20,7 +20,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
 # A/B
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
-AB_OTA_UPDATER := true
 
 # VIRTUAL A/B
 ENABLE_VIRTUAL_AB := true
