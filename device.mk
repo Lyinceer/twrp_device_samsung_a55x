@@ -18,6 +18,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 # Configure emulated_storage.mk
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
+# VIRTUAL A/B
+ENABLE_VIRTUAL_AB := true
+
 # A/B
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.2-impl \
