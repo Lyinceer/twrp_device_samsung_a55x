@@ -92,9 +92,6 @@ BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
 
-# Set FSTAB
-TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/recovery/root/system/etc/recovery.fstab
-
 TARGET_BOARD_SUFFIX := _64                    # Remove if the device is 32-bit
 TARGET_USES_64_BIT_BINDER := true             # Remove if the device is 32-bit
 
