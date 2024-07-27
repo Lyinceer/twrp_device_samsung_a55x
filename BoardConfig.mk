@@ -139,7 +139,7 @@ TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 TARGET_USES_MKE2FS            := true
 TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.s5e8845
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
 
 # Recovery - Ramdisk
 BOARD_RAMDISK_USE_LZ4 := true
