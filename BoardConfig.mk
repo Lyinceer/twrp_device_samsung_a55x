@@ -176,8 +176,8 @@ TW_INCLUDE_NTFS_3G := true
 # TWRP Configuration - Vendor Modules
 TW_LOAD_VENDOR_BOOT_MODULES := true
 
-#VINTF
-PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
-
 # Workaround for copyout error
 TARGET_COPY_OUT_VENDOR := vendor
+
+TARGET_VENDOR := samsung
+TARGET_VENDOR_PRODUCT_NAME := a55x
