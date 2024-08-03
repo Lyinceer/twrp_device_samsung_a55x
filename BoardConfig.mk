@@ -6,25 +6,10 @@
 
 DEVICE_PATH := device/samsung/a55x
 
-# A/B
-AB_OTA_UPDATER := true
-AB_OTA_PARTITIONS += \
-    vendor_dlkm \
-    vendor_boot \
-    system_dlkm \
-    dtbo \
-    vendor \
-    vbmeta \
-    init_boot \
-    boot \
-    odm \
-    vbmeta_system \
-    system \
-    product
-
 # Architecture
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
+TARGET_2ND_ARCH_VARIANT := armv8-2a
 TARGET_CPU_ABI := arm64-v8a
 TARGET_CPU_ABI2 := 
 TARGET_CPU_VARIANT := generic
@@ -32,6 +17,9 @@ TARGET_CPU_VARIANT_RUNTIME := cortex-a76
 
 # APEX
 DEXPREOPT_GENERATE_APEX_IMAGE := true
+
+# AVB
+BOARD_AVB_ENABLE := true
 
 # Bootloader
 BOARD_VENDOR := samsung
@@ -87,7 +75,6 @@ BOARD_KERNEL_TAGS_OFFSET := 0x00000000
 BOARD_VENDOR_CMDLINE := bootconfig loop.max_part=7
 TARGET_IS_64_BIT := true
 TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/kernel
-TARGET_PREBUILT_RECOVERY_KERNEL := $(LOCAL_PATH)/prebuilt/kernel
 
 # Mkbootimg
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
@@ -146,7 +133,6 @@ TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 TARGET_USES_MKE2FS            := true
 TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/recovery.fstab
 
 # Recovery
@@ -155,9 +141,7 @@ BOARD_EXCLUDE_KERNEL_FROM_RECOVERY_IMAGE := true
 BOARD_MOVE_RECOVERY_RESOURCES_TO_VENDOR_BOOT := true
 BOARD_INCLUDE_RECOVERY_RAMDISK_IN_VENDOR_BOOT := true
 
-# Recovery - Ramdisk
 BOARD_RAMDISK_USE_LZ4 := true
-
 BOARD_KERNEL_SEPARATED_DTBO := true
 
 # SPL

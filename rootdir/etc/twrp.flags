@@ -17,6 +17,9 @@
 /metadata       f2fs  /dev/block/by-name/metadata                   flags=display="Metadata";backup=1
 /data           f2fs  /dev/block/by-name/userdata                   flags=display="Data";backup=1
 
+# RECOVERY
+/dev/block/by-name/sec_efs	/efs	ext4	defaults	recoveryonly
+
 # External Stuff
 /external_sd        vfat         /dev/block/mmcblk0p1 /dev/block/mmcblk0   flags=display="External SDCard";storage;wipeingui;removable;
 /usb-otg            vfat         /dev/block/sdf /dev/block/sdf1            flags=display="USB OTG";storage;wipeingui;removable;
