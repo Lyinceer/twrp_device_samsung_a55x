@@ -8,17 +8,17 @@
 /mnt/vendor/efs ext4  /dev/block/by-name/efs                        flags=display="EFS";slotselect;backup=1
 /slotinfo       emmc  /dev/block/by-name/slotinfo                   flags=display="Slotinfo";backup=1
 
-#CSC
+# CSC
 /prism          ext4  /dev/block/by-name/prism                      flags=display="Prism";slotselect;backup=1;flashimg
 /optics         ext4  /dev/block/by-name/optics                     flags=display="Optics";slotselect;backup=1;flashimg
 
-#Data
+# Data
 /cache          ext4  /dev/block/by-name/cache	                    flags=display="Cache";backup=1
 /metadata       f2fs  /dev/block/by-name/metadata                   flags=display="Metadata";backup=1
 /data           f2fs  /dev/block/by-name/userdata                   flags=display="Data";backup=1
 
-# RECOVERY
-/dev/block/by-name/sec_efs	/efs	ext4	defaults	recoveryonly
+# Recovery
+/efs            ext4  /dev/block/by-name/sec_efs                    flags=display="EFS";slotselect;backup=1;formattable
 
 # External Stuff
 /external_sd        vfat         /dev/block/mmcblk0p1 /dev/block/mmcblk0   flags=display="External SDCard";storage;wipeingui;removable;
