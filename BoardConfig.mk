@@ -130,7 +130,7 @@ TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 TARGET_USES_MKE2FS            := true
 TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/recovery.fstab
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
 
 # Recovery
 TARGET_NO_RECOVERY := true
@@ -156,7 +156,7 @@ TW_HAS_DOWNLOAD_MODE := true
 TW_MAX_BRIGHTNESS := 200
 TW_NO_LEGACY_PROPS := true
 TW_NO_REBOOT_BOOTLOADER := true
-TW_DEVICE_VERSION := TND_003
+TW_DEVICE_VERSION := LOL_001_BETA
 
 # TWRP Configuration - Excludes
 TW_EXCLUDE_APEX := true

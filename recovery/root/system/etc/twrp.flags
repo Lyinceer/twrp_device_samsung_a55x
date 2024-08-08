@@ -1,0 +1,35 @@
+# Physical Partitions
+/boot           emmc  /dev/block/by-name/boot                       flags=display="Boot";backup=1;flashimg=1;slotselect
+/init_boot      emmc  /dev/block/by-name/init_boot                  flags=display="Init Boot";backup=1;flashimg=1;slotselect
+/vendor_boot    emmc  /dev/block/by-name/vendor_boot                flags=display="Vendor Boot";backup=1;flashimg=1;slotselect
+/dtbo           emmc  /dev/block/by-name/dtbo                       flags=display="DTBO";backup=1;flashimg=1;slotselect
+/vbmeta         emmc  /dev/block/by-name/vbmeta                     flags=display="vbmeta";backup=1;flashimg=1;slotselect
+/vbmeta_system  emmc  /dev/block/by-name/vbmeta_system              flags=display="vbmeta system";backup=1;flashimg=1;slotselect
+/mnt/vendor/efs ext4  /dev/block/by-name/efs                        flags=display="EFS";backup=1;slotselect
+/slotinfo       emmc  /dev/block/by-name/slotinfo                   flags=display="Slotinfo";backup=1
+
+# CSC
+/prism          ext4  /dev/block/by-name/prism                      flags=display="Prism";backup=1;flashimg=1;slotselect
+/optics         ext4  /dev/block/by-name/optics                     flags=display="Optics";backup=1;flashimg=1;slotselect
+
+# Data
+/cache          ext4  /dev/block/by-name/cache	                    flags=display="Cache";backup=1
+/metadata       f2fs  /dev/block/by-name/metadata                   flags=display="Metadata";backup=1
+/data           f2fs  /dev/block/by-name/userdata                   flags=display="Data";backup=1
+
+# Superimage Logical Partitions
+/system_image   emmc      /dev/block/bootdevice/by-name/system       flags=display="System_Image";backup=1;flashimg=1;slotselect
+/vendor_image   emmc      /dev/block/bootdevice/by-name/vendor       flags=display="Vendor_Image";backup=1;flashimg=1;slotselect
+/product_image  emmc      /dev/block/bootdevice/by-name/product      flags=display="Product_Image";backup=1;flashimg=1;slotselect
+
+# Dynamic Partitions
+/system_root   ext4   /dev/block/bootdevice/by-name/system      flags=display="System";backup=0;wipeingui;slotselect
+/vendor        ext4   /dev/block/bootdevice/by-name/vendor      flags=display="Vendor";backup=0;wipeingui;slotselect
+/product       ext4   /dev/block/bootdevice/by-name/product     flags=display="Product";backup=0;wipeingui;slotselect
+
+# Recovery
+/efs            ext4  /dev/block/by-name/sec_efs                    flags=display="EFS";slotselect;backup=1;formattable
+
+# External Stuff
+/external_sd        vfat         /dev/block/mmcblk0p1 /dev/block/mmcblk0   flags=display="External SDCard";storage;wipeingui;removable;
+/usb-otg            vfat         /dev/block/sdf /dev/block/sdf1            flags=display="USB OTG";storage;wipeingui;removable;
