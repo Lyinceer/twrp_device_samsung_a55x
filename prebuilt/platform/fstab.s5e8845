@@ -4,13 +4,9 @@
 # specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
 
 system                                          /system               erofs     ro              slotselect,wait,logical,first_stage_mount,avb=vbmeta_system,avb_keys=/avb
-system                                          /system               f2fs      ro              slotselect,wait,logical,first_stage_mount,avb=vbmeta_system,avb_keys=/avb
-system                                          /system               ext4      ro              slotselect,wait,logical,first_stage_mount,avb=vbmeta_system,avb_keys=/avb
 vendor                                          /vendor               erofs     ro              slotselect,wait,logical,first_stage_mount,avb=vbmeta_system
 vendor_dlkm                                     /vendor_dlkm          erofs     ro              slotselect,wait,logical,first_stage_mount,avb
 system_dlkm                                     /system_dlkm          erofs     ro              slotselect,wait,logical,first_stage_mount,avb
-system_dlkm                                     /system_dlkm          f2fs      ro              slotselect,wait,logical,first_stage_mount,avb
-system_dlkm                                     /system_dlkm          ext4      ro              slotselect,wait,logical,first_stage_mount,avb
 product                                         /product              erofs     ro              slotselect,wait,logical,first_stage_mount,avb
 odm                                             /odm                  erofs     ro              slotselect,wait,logical,first_stage_mount,avb
 
