@@ -3,12 +3,17 @@
 # The filesystem that contains the filesystem checker binary (typically /system) cannot
 # specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
 
-system                                          /system               erofs     ro              slotselect,wait,logical,first_stage_mount,avb=vbmeta_system,avb_keys=/avb
-vendor                                          /vendor               erofs     ro              slotselect,wait,logical,first_stage_mount,avb=vbmeta_system
-vendor_dlkm                                     /vendor_dlkm          erofs     ro              slotselect,wait,logical,first_stage_mount,avb
-system_dlkm                                     /system_dlkm          erofs     ro              slotselect,wait,logical,first_stage_mount,avb
-product                                         /product              erofs     ro              slotselect,wait,logical,first_stage_mount,avb
-odm                                             /odm                  erofs     ro              slotselect,wait,logical,first_stage_mount,avb
+system	/system	erofs	ro	slotselect,wait,logical,first_stage_mount,avb=vbmeta_system,avb_keys=/avb
+system	/system	f2fs	ro	slotselect,wait,logical,first_stage_mount,avb=vbmeta_system,avb_keys=/avb
+system	/system	ext4	ro	slotselect,wait,logical,first_stage_mount,avb=vbmeta_system,avb_keys=/avb
+# During compliance testing, the previous line would fail (because ESSI is ext4), and the next line would be used to mount ESSI.
+vendor	/vendor	erofs	ro	slotselect,wait,logical,first_stage_mount,avb=vbmeta_system
+vendor_dlkm	/vendor_dlkm	erofs	ro	slotselect,wait,logical,first_stage_mount,avb
+system_dlkm	/system_dlkm	erofs	ro	slotselect,wait,logical,first_stage_mount,avb
+system_dlkm	/system_dlkm	f2fs	ro	slotselect,wait,logical,first_stage_mount,avb
+system_dlkm	/system_dlkm	ext4	ro	slotselect,wait,logical,first_stage_mount,avb
+product	/product	erofs	ro	slotselect,wait,logical,first_stage_mount,avb
+odm	/odm	erofs	ro	slotselect,wait,logical,first_stage_mount,avb
 
 /dev/block/by-name/boot                         /boot                 emmc      defaults              slotselect,first_stage_mount,formattable,avb=boot
 /dev/block/by-name/init_boot                    /init_boot            emmc      defaults              slotselect,first_stage_mount,formattable,avb=init_boot

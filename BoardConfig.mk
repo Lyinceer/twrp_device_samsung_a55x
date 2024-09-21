@@ -6,6 +6,9 @@
 
 DEVICE_PATH := device/samsung/a55x
 
+# Allow for building with minimal manifest
+ALLOW_MISSING_DEPENDENCIES := true
+
 # Architecture
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
@@ -116,7 +119,7 @@ BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := erofs
 BOARD_SUPER_PARTITION_SIZE := 9539794832 # TODO: Fix hardcoded value
 BOARD_SUPER_PARTITION_GROUPS := samsung_dynamic_partitions
 BOARD_SAMSUNG_DYNAMIC_PARTITIONS_PARTITION_LIST := system vendor product system_ext odm vendor_dlkm odm_dlkm
-BOARD_SAMSUNG_DYNAMIC_PARTITIONS_SIZE := 9539794832 # TODO: Fix hardcoded value
+BOARD_SAMSUNG_DYNAMIC_PARTITIONS_SIZE := 9516548096 # TODO: Fix hardcoded value
 
 # GSI && GKI
 BOARD_MOVE_GSI_AVB_KEYS_TO_VENDOR_BOOT := true
@@ -180,6 +183,11 @@ TW_INCLUDE_NTFS_3G := true
 
 # TWRP Configuration - Vendor Modules
 TW_LOAD_VENDOR_BOOT_MODULES := true
+
+# Vendor Boot DLKM
+BOARD_VENDOR_RAMDISK_FRAGMENTS := dlkm
+BOARD_VENDOR_RAMDISK_FRAGMENT.dlkm.PREBUILT := $(DEVICE_PATH)/prebuilt/dlkm/vendor_ramdisk_dlkm.cpio.lz4
+BOARD_VENDOR_RAMDISK_FRAGMENT.dlkm.MKBOOTIMG_ARGS := --board_id2 0x0 --ramdisk_type DLKM
 
 # Workaround for copyout error
 TARGET_COPY_OUT_VENDOR := vendor

@@ -5,6 +5,8 @@
 /dtbo           emmc  /dev/block/by-name/dtbo                       flags=display="DTBO";backup=1;flashimg=1;slotselect
 /vbmeta         emmc  /dev/block/by-name/vbmeta                     flags=display="vbmeta";backup=1;flashimg=1;slotselect
 /vbmeta_system  emmc  /dev/block/by-name/vbmeta_system              flags=display="vbmeta system";backup=1;flashimg=1;slotselect
+/mnt/vendor/efs ext4  /dev/block/by-name/efs                        flags=display="EFS";slotselect;backup=1;formattable
+/efs            ext4  /dev/block/by-name/sec_efs                  flags=display="SEC_EFS";slotselect;backup=1;formattable
 /slotinfo       emmc  /dev/block/by-name/slotinfo                   flags=display="Slotinfo";backup=1
 
 # CSC
@@ -13,10 +15,6 @@
 
 # Data
 /cache          ext4  /dev/block/by-name/cache	                    flags=display="Cache";backup=1
-
-# Recovery
-/mnt/vendor/efs ext4  /dev/block/by-name/efs                        flags=display="EFS";slotselect;backup=1;formattable
-/efs            ext4    /dev/block/by-name/sec_efs                  flags=display="SEC_EFS";slotselect;backup=1;formattable
 
 # External Stuff
 /external_sd        vfat         /dev/block/mmcblk0p1 /dev/block/mmcblk0   flags=display="External SDCard";storage;wipeingui;removable;
