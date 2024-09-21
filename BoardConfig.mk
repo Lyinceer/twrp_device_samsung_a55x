@@ -183,11 +183,6 @@ TW_INCLUDE_NTFS_3G := true
 # TWRP Configuration - Vendor Modules
 TW_LOAD_VENDOR_BOOT_MODULES := true
 
-# Vendor Boot DLKM
-BOARD_VENDOR_RAMDISK_FRAGMENTS := dlkm
-BOARD_VENDOR_RAMDISK_FRAGMENT.dlkm.PREBUILT := $(DEVICE_PATH)/prebuilt/dlkm/vendor_ramdisk_dlkm.cpio.lz4
-BOARD_VENDOR_RAMDISK_FRAGMENT.dlkm.MKBOOTIMG_ARGS := --board_id2 0x0 --ramdisk_type DLKM
-
 # Workaround for copyout error
 TARGET_COPY_OUT_VENDOR := vendor
 

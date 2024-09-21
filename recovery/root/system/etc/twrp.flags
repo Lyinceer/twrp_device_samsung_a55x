@@ -6,7 +6,7 @@
 /vbmeta         emmc  /dev/block/by-name/vbmeta                     flags=display="vbmeta";backup=1;flashimg=1;slotselect
 /vbmeta_system  emmc  /dev/block/by-name/vbmeta_system              flags=display="vbmeta system";backup=1;flashimg=1;slotselect
 /mnt/vendor/efs ext4  /dev/block/by-name/efs                        flags=display="EFS";slotselect;backup=1;formattable
-/efs            ext4  /dev/block/by-name/sec_efs                  flags=display="SEC_EFS";slotselect;backup=1;formattable
+/efs            ext4  /dev/block/by-name/sec_efs                    flags=display="SEC_EFS";slotselect;backup=1;formattable
 /slotinfo       emmc  /dev/block/by-name/slotinfo                   flags=display="Slotinfo";backup=1
 
 # CSC
@@ -15,6 +15,8 @@
 
 # Data
 /cache          ext4  /dev/block/by-name/cache	                    flags=display="Cache";backup=1
+/metadata       f2fs  /dev/block/by-name/metadata	                flags=display="metadata";backup=1
+/data           f2fs  /dev/block/by-name/userdata	                flags=fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized+wrappedkey_v0,metadata_encryption=aes-256-xts:wrappedkey_v0,keydirectory=/metadata/vold/metadata_encryption,ddp
 
 # External Stuff
 /external_sd        vfat         /dev/block/mmcblk0p1 /dev/block/mmcblk0   flags=display="External SDCard";storage;wipeingui;removable;
