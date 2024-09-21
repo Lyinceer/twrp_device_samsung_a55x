@@ -5,7 +5,6 @@
 /dtbo           emmc  /dev/block/by-name/dtbo                       flags=display="DTBO";backup=1;flashimg=1;slotselect
 /vbmeta         emmc  /dev/block/by-name/vbmeta                     flags=display="vbmeta";backup=1;flashimg=1;slotselect
 /vbmeta_system  emmc  /dev/block/by-name/vbmeta_system              flags=display="vbmeta system";backup=1;flashimg=1;slotselect
-/mnt/vendor/efs ext4  /dev/block/by-name/efs                        flags=display="EFS";backup=1;slotselect
 /slotinfo       emmc  /dev/block/by-name/slotinfo                   flags=display="Slotinfo";backup=1
 
 # CSC
@@ -14,13 +13,6 @@
 
 # Data
 /cache          ext4  /dev/block/by-name/cache	                    flags=display="Cache";backup=1
-/metadata       f2fs  /dev/block/by-name/metadata                   flags=display="Metadata";backup=1
-/data           f2fs  /dev/block/by-name/userdata                   flags=display="Data";backup=1
-
-# Superimage Logical Partitions
-/system_image   emmc      /dev/block/bootdevice/by-name/system       flags=display="System_Image";backup=1;flashimg=1;slotselect
-/vendor_image   emmc      /dev/block/bootdevice/by-name/vendor       flags=display="Vendor_Image";backup=1;flashimg=1;slotselect
-/product_image  emmc      /dev/block/bootdevice/by-name/product      flags=display="Product_Image";backup=1;flashimg=1;slotselect
 
 # Dynamic Partitions
 /system_root   ext4   /dev/block/bootdevice/by-name/system      flags=display="System";backup=0;wipeingui;slotselect
@@ -28,7 +20,8 @@
 /product       ext4   /dev/block/bootdevice/by-name/product     flags=display="Product";backup=0;wipeingui;slotselect
 
 # Recovery
-/efs            ext4  /dev/block/by-name/sec_efs                    flags=display="EFS";slotselect;backup=1;formattable
+/mnt/vendor/efs ext4  /dev/block/by-name/efs                        flags=display="EFS";slotselect;backup=1;formattable
+/efs            ext4    /dev/block/by-name/sec_efs                  flags=display="SEC_EFS";slotselect;backup=1;formattable
 
 # External Stuff
 /external_sd        vfat         /dev/block/mmcblk0p1 /dev/block/mmcblk0   flags=display="External SDCard";storage;wipeingui;removable;

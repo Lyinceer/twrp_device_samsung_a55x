@@ -3,24 +3,24 @@
 # The filesystem that contains the filesystem checker binary (typically /system) cannot
 # specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
 
-system                                          /system               erofs     ro              slotselect,wait,logical,first_stage_mount,avb=vbmeta_system,avb_keys=/avb
-vendor                                          /vendor               erofs     ro              slotselect,wait,logical,first_stage_mount,avb=vbmeta_system
-vendor_dlkm                                     /vendor_dlkm          erofs     ro              slotselect,wait,logical,first_stage_mount,avb
-system_dlkm                                     /system_dlkm          erofs     ro              slotselect,wait,logical,first_stage_mount,avb
-product                                         /product              erofs     ro              slotselect,wait,logical,first_stage_mount,avb
-odm                                             /odm                  erofs     ro              slotselect,wait,logical,first_stage_mount,avb
+system	/system	erofs	ro	slotselect,wait,logical,first_stage_mount,avb=vbmeta_system,avb_keys=/avb
+system	/system	f2fs	ro	slotselect,wait,logical,first_stage_mount,avb=vbmeta_system,avb_keys=/avb
+system	/system	ext4	ro	slotselect,wait,logical,first_stage_mount,avb=vbmeta_system,avb_keys=/avb
+vendor	/vendor	erofs	ro	slotselect,wait,logical,first_stage_mount,avb=vbmeta_system
+vendor_dlkm	/vendor_dlkm	erofs	ro	slotselect,wait,logical,first_stage_mount
+system_dlkm	/system_dlkm	erofs	ro	slotselect,wait,logical,first_stage_mount
+system_dlkm	/system_dlkm	f2fs	ro	slotselect,wait,logical,first_stage_mount
+system_dlkm	/system_dlkm	ext4	ro	slotselect,wait,logical,first_stage_mount
+product     /product        erofs	ro	slotselect,wait,logical,first_stage_mount,avb
+odm         /odm            erofs	ro	slotselect,wait,logical,first_stage_mount,avb
 
-# Vold
-/devices/platform/13200000.usb*                 auto                  vfat      default              voldmanaged=usb:auto
-/devices/platform/12be0000.dwmmc2/mmc_host*     auto                  auto      default              voldmanaged=sdcard:auto
+# VOLD
+/devices/platform/13200000.usb*	auto	vfat	default	voldmanaged=usb:auto
+/devices/platform/12be0000.dwmmc2/mmc_host*	auto	auto	default	voldmanaged=sdcard:auto
 
 # Data
 /dev/block/by-name/metadata	/metadata	f2fs	noatime,nosuid,nodev,discard,sync,fsync_mode=strict,data_flush	wait,formattable,first_stage_mount,check
 /dev/block/by-name/userdata	/data	f2fs	noatime,nosuid,nodev,discard,usrquota,grpquota,fsync_mode=nobarrier,reserve_root=32768,resgid=5678,inlinecrypt	latemount,wait,check,quota,checkpoint=fs,,reservedsize=128M,fscompress,fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized+wrappedkey_v0,metadata_encryption=aes-256-xts:wrappedkey_v0,keydirectory=/metadata/vold/metadata_encryption,ddp
-
-#CSC
-/dev/block/by-name/prism                        /prism                ext4      ro,barrier=1             slotselect,nofail,avb,first_stage_mount
-/dev/block/by-name/optics                       /optics               ext4      ro,barrier=1             slotselect,nofail,avb,first_stage_mount
 
 # SWAP
 /dev/block/zram0	none	swap	defaults	wait,zramsize=2147483648
