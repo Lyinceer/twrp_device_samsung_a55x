@@ -71,12 +71,6 @@ PRODUCT_PACKAGES += \
     mx_logger.sh \
     mx_logger_dump.sh \
 
-# Vendor
-PRODUCT_PACKAGES += \
-    mkshrc_vendor \
-    toybox_vendor \
-    sh_vendor
-
 # Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
