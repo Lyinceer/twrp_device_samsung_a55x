@@ -1,22 +1,20 @@
 # Physical Partitions
-/boot           emmc  /dev/block/by-name/boot                       flags=display="Boot";backup=1;flashimg=1;slotselect
-/init_boot      emmc  /dev/block/by-name/init_boot                  flags=display="Init Boot";backup=1;flashimg=1;slotselect
-/vendor_boot    emmc  /dev/block/by-name/vendor_boot                flags=display="Vendor Boot";backup=1;flashimg=1;slotselect
-/dtbo           emmc  /dev/block/by-name/dtbo                       flags=display="DTBO";backup=1;flashimg=1;slotselect
-/vbmeta         emmc  /dev/block/by-name/vbmeta                     flags=display="vbmeta";backup=1;flashimg=1;slotselect
-/vbmeta_system  emmc  /dev/block/by-name/vbmeta_system              flags=display="vbmeta system";backup=1;flashimg=1;slotselect
-/mnt/vendor/efs ext4  /dev/block/by-name/efs                        flags=display="EFS";slotselect;backup=1;formattable
-/efs            ext4  /dev/block/by-name/sec_efs                    flags=display="SEC_EFS";slotselect;backup=1;formattable
+/boot           emmc  /dev/block/by-name/boot                       flags=display="Boot";slotselect;backup=1;flashimg
+/init_boot      emmc  /dev/block/by-name/init_boot                  flags=display="Init Boot";slotselect;backup=1;flashimg
+/vendor_boot    emmc  /dev/block/by-name/vendor_boot                flags=display="Vendor Boot";slotselect;backup=1;flashimg
+/dtbo           emmc  /dev/block/by-name/dtbo                       flags=display="DTBO";slotselect;backup=1;flashimg
+/vbmeta         emmc  /dev/block/by-name/vbmeta                     flags=display="vbmeta";slotselect;backup=1;flashimg
+/vbmeta_system  emmc  /dev/block/by-name/vbmeta_system              flags=display="vbmeta system";slotselect;backup=1;flashimg
+/mnt/vendor/efs ext4  /dev/block/by-name/efs                        flags=display="EFS";slotselect;backup=1
+/efs            ext4    /dev/block/by-name/sec_efs                  flags=display="SEC_EFS";slotselect;backup=1
 /slotinfo       emmc  /dev/block/by-name/slotinfo                   flags=display="Slotinfo";backup=1
 
-# CSC
-/prism          ext4  /dev/block/by-name/prism                      flags=display="Prism";backup=1;flashimg=1;slotselect
-/optics         ext4  /dev/block/by-name/optics                     flags=display="Optics";backup=1;flashimg=1;slotselect
+#CSC
+/prism          ext4  /dev/block/by-name/prism                      flags=display="Prism";slotselect;backup=1;flashimg
+/optics         ext4  /dev/block/by-name/optics                     flags=display="Optics";slotselect;backup=1;flashimg
 
-# Data
+#Data
 /cache          ext4  /dev/block/by-name/cache	                    flags=display="Cache";backup=1
-/metadata       f2fs  /dev/block/by-name/metadata	                flags=display="metadata";backup=1
-/data           f2fs  /dev/block/by-name/userdata	                flags=fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized+wrappedkey_v0,metadata_encryption=aes-256-xts:wrappedkey_v0,keydirectory=/metadata/vold/metadata_encryption,ddp
 
 # External Stuff
 /external_sd        vfat         /dev/block/mmcblk0p1 /dev/block/mmcblk0   flags=display="External SDCard";storage;wipeingui;removable;

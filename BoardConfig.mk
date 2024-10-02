@@ -9,6 +9,22 @@ DEVICE_PATH := device/samsung/a55x
 # Allow for building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true
 
+# A/B
+AB_OTA_UPDATER := true
+AB_OTA_PARTITIONS += \
+    vendor_dlkm \
+    vendor_boot \
+    system_dlkm \
+    dtbo \
+    vendor \
+    vbmeta \
+    init_boot \
+    boot \
+    odm \
+    vbmeta_system \
+    system \
+    product
+
 # Architecture
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
@@ -75,14 +91,14 @@ BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_USES_GENERIC_KERNEL_IMAGE := true
 
 # Kernel
-TARGET_NO_KERNEL := true
 BOARD_BOOT_HEADER_VERSION := 4
 BOARD_HEADER_SIZE := 2128
 BOARD_KERNEL_BASE := 0x10000000
 BOARD_KERNEL_PAGESIZE:= 2048
 BOARD_RAMDISK_OFFSET := 0x00000000
 BOARD_KERNEL_TAGS_OFFSET := 0x00000000
-BOARD_KERNEL_CMDLINE := bootconfig loop.max_part=7
+BOARD_BOOTCONFIG += androidboot.serialconsole=0 loop.max_part=7
+BOARD_KERNEL_CMDLINE += bootconfig
 TARGET_IS_64_BIT := true
 
 # Mkbootimg
@@ -106,7 +122,6 @@ BOARD_USES_METADATA_PARTITION := true
 
 # Partitions - Sizes
 BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
-BOARD_DTB_SIZE := 258920
 BOARD_DTBOIMG_PARTITION_SIZE := 8388608
 BOARD_INIT_BOOT_IMAGE_PARTITION_SIZE := 16777216
 BOARD_VENDOR_BOOTIMAGE_PARTITION_SIZE := 67108864
@@ -119,7 +134,7 @@ BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := erofs
 
 # Partitions - Super/Logical
-BOARD_SUPER_PARTITION_SIZE := 9539794832 # TODO: Fix hardcoded value
+BOARD_SUPER_PARTITION_SIZE := 9666725824 # TODO: Fix hardcoded value
 BOARD_SUPER_PARTITION_GROUPS := samsung_dynamic_partitions
 BOARD_SAMSUNG_DYNAMIC_PARTITIONS_PARTITION_LIST := system vendor vendor_dlkm product odm
 BOARD_SAMSUNG_DYNAMIC_PARTITIONS_SIZE := 9539794832 # TODO: Fix hardcoded value
@@ -127,16 +142,10 @@ BOARD_SAMSUNG_DYNAMIC_PARTITIONS_SIZE := 9539794832 # TODO: Fix hardcoded value
 # GSI && GKI
 BOARD_MOVE_GSI_AVB_KEYS_TO_VENDOR_BOOT := true
 
-# Separate vendor_dlkm partition
-BOARD_USES_VENDOR_DLKMIMAGE := true
-BOARD_VENDOR_DLKMIMAGE_FILE_SYSTEM_TYPE := ext4
-TARGET_COPY_OUT_VENDOR_DLKM := vendor_dlkm
-
 # Platform
 TARGET_BOARD_PLATFORM := erd8845
 
 # Properties
-TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery.fstab
 TARGET_RECOVERY_INITRC := $(DEVICE_PATH)/recovery/root/init.recovery.s5e8845.rc
