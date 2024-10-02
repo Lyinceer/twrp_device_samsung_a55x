@@ -10,9 +10,6 @@ DEVICE_PATH := device/samsung/a55x
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 
-# The app "/system/bin/bootctl" doesn't currently exist in custom recoveries, so running it currently does nothing. So we added this.
-RECOVERY_BINARY_SOURCE_FILES += $(TARGET_OUT_EXECUTABLES)/bootctl
-
 # Inherit some common twrp stuff.
 $(call inherit-product, vendor/twrp/config/common.mk)
 
