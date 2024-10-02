@@ -6,6 +6,9 @@
 
 LOCAL_PATH := device/samsung/a55x
 
+# Enable virtual A/B OTA
+$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/compression.mk)
+
 # Enable updating of APEXes
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
@@ -60,22 +63,11 @@ PRODUCT_PACKAGES += \
     update_engine_sideload \
     checkpoint_gc
 
-# Rootdir
-PRODUCT_PACKAGES += \
-    gps.sh \
-    enable_test_mode.sh \
-    hdm_status.sh \
-    init.insmod.sh \
-    mx_log_collection.sh \
-    mx_logger.sh \
-    mx_logger_dump.sh \
-
 # Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # Shipping level
 PRODUCT_SHIPPING_API_LEVEL := 32
-PRODUCT_TARGET_VNDK_VERSION := 32
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
