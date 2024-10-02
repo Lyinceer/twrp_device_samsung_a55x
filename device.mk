@@ -80,3 +80,8 @@ PRODUCT_TARGET_VNDK_VERSION := 32
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
+
+# Vendor Boot Platform
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)rootdir/etc/fstab.s5e8845:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.s5e8845 \
+    $(LOCAL_PATH)rootdir/etc/fstab.s5e8845:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/fstab.s5e8845 \
