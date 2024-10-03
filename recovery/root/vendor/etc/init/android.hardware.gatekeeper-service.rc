@@ -1,8 +1,0 @@
-service gatekeeper-exynos /vendor/bin/hw/android.hardware.gatekeeper-service
-    user root
-    group root 5678
-    disabled
-    seclabel u:r:recovery:s0
-
-on post-fs-data
-    mkdir /data/vendor/gatekeeper 0770 system system
