@@ -9,22 +9,6 @@ DEVICE_PATH := device/samsung/a55x
 # Allow for building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true
 
-# A/B
-AB_OTA_UPDATER := true
-AB_OTA_PARTITIONS += \
-    vendor_dlkm \
-    vendor_boot \
-    system_dlkm \
-    dtbo \
-    vendor \
-    vbmeta \
-    init_boot \
-    boot \
-    odm \
-    vbmeta_system \
-    system \
-    product
-
 # Architecture
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
@@ -91,17 +75,20 @@ BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_USES_GENERIC_KERNEL_IMAGE := true
 
 # Kernel
+TARGET_NO_KERNEL := true
 BOARD_BOOT_HEADER_VERSION := 4
 BOARD_HEADER_SIZE := 2128
 BOARD_KERNEL_BASE := 0x10000000
 BOARD_KERNEL_PAGESIZE:= 2048
 BOARD_RAMDISK_OFFSET := 0x00000000
 BOARD_KERNEL_TAGS_OFFSET := 0x00000000
-BOARD_BOOTCONFIG += androidboot.serialconsole=0 loop.max_part=7
-BOARD_KERNEL_CMDLINE += bootconfig
+BOARD_VENDOR_CMDLINE += bootconfig loop.max_part=7
+BOARD_KERNEL_SEPARATED_DTBO := true
 TARGET_IS_64_BIT := true
 
 # Mkbootimg
+BOARD_MKBOOTIMG_ARGS += --vendor_cmdline $(BOARD_VENDOR_CMDLINE)
+BOARD_MKBOOTIMG_ARGS += --pagesize $(BOARD_KERNEL_PAGESIZE) --board ""
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
@@ -148,7 +135,6 @@ TARGET_BOARD_PLATFORM := erd8845
 # Properties
 TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery.fstab
-TARGET_INIT_RC := $(DEVICE_PATH)/recovery/root/init.recovery.s5e8845.rc
 
 # Recovery
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
@@ -183,7 +169,7 @@ TW_NO_REBOOT_BOOTLOADER := true
 
 # TWRP Configuration - Version
 TW_DEFAULT_DEVICE_NAME := SM_A556E
-TW_DEVICE_VERSION := SM_A556E - Lyinceer
+TW_DEVICE_VERSION := Lyinceer
 
 # TWRP Configuration - Excludes
 TW_EXCLUDE_APEX := true

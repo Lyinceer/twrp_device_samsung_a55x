@@ -15,6 +15,22 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 # Configure emulated_storage.mk
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
+# A/B
+AB_OTA_UPDATER := true
+AB_OTA_PARTITIONS += \
+    vendor_dlkm \
+    vendor_boot \
+    system_dlkm \
+    dtbo \
+    vendor \
+    vbmeta \
+    init_boot \
+    boot \
+    odm \
+    vbmeta_system \
+    system \
+    product
+
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
     POSTINSTALL_PATH_system=system/bin/otapreopt_script \
