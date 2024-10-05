@@ -24,7 +24,6 @@ AB_OTA_PARTITIONS += \
     vbmeta_system \
     boot \
     product
-BOARD_USES_RECOVERY_AS_BOOT := true
 
 # Architecture
 TARGET_ARCH := arm64
@@ -207,6 +206,9 @@ TW_INCLUDE_NTFS_3G := true
 
 # TWRP Configuration - Vendor Modules
 TW_LOAD_VENDOR_BOOT_MODULES := true
+
+# Move Recovery Resources To Vendor Boot
+BOARD_MOVE_RECOVERY_RESOURCES_TO_VENDOR_BOOT := true
 
 # Workaround for copyout error
 TARGET_COPY_OUT_VENDOR := vendor
