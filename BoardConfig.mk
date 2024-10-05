@@ -9,22 +9,6 @@ DEVICE_PATH := device/samsung/a55x
 # Allow for building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true
 
-# A/B
-AB_OTA_UPDATER := true
-AB_OTA_PARTITIONS += \
-    vendor_dlkm \
-    dtbo \
-    vendor_boot \
-    system_dlkm \
-    vendor \
-    init_boot \
-    vbmeta \
-    odm \
-    system \
-    vbmeta_system \
-    boot \
-    product
-
 # Architecture
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
@@ -159,8 +143,6 @@ TARGET_USES_MKE2FS := true
 # Recovery
 TARGET_NO_RECOVERY := true
 BOARD_EXCLUDE_KERNEL_FROM_RECOVERY_IMAGE := true
-BOARD_MOVE_RECOVERY_RESOURCES_TO_VENDOR_BOOT := true
-BOARD_INCLUDE_RECOVERY_RAMDISK_IN_VENDOR_BOOT := true
 
 # Ramdisk
 BOARD_RAMDISK_USE_LZ4 := true
@@ -182,8 +164,7 @@ TW_NO_LEGACY_PROPS := true
 TW_NO_REBOOT_BOOTLOADER := true
 
 # TWRP Configuration - Version
-TW_DEFAULT_DEVICE_NAME := SM_A556E
-TW_DEVICE_VERSION := Lyinceer
+TW_DEVICE_VERSION := A556E-02
 
 # TWRP Configuration - Excludes
 TW_EXCLUDE_APEX := true
