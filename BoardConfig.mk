@@ -9,6 +9,23 @@ DEVICE_PATH := device/samsung/a55x
 # Allow for building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true
 
+# A/B
+AB_OTA_UPDATER := true
+AB_OTA_PARTITIONS += \
+    vendor_dlkm \
+    dtbo \
+    vendor_boot \
+    system_dlkm \
+    vendor \
+    init_boot \
+    vbmeta \
+    odm \
+    system \
+    vbmeta_system \
+    boot \
+    product
+BOARD_USES_RECOVERY_AS_BOOT := true
+
 # Architecture
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
@@ -66,6 +83,7 @@ TW_RECOVERY_ADDITIONAL_RELINK_FILES += $(TARGET_OUT_EXECUTABLES)/debuggerd
 TARGET_SCREEN_DENSITY := 390
 TARGET_SCREEN_HEIGHT := 2340
 TARGET_SCREEN_WIDTH := 1080
+TARGET_USES_VULKAN := true
 
 # DTBs
 TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb
@@ -82,13 +100,14 @@ BOARD_KERNEL_BASE := 0x10000000
 BOARD_KERNEL_PAGESIZE:= 2048
 BOARD_RAMDISK_OFFSET := 0x00000000
 BOARD_KERNEL_TAGS_OFFSET := 0x00000000
-BOARD_BOOTCONFIG +=  loop.max_part=7
-BOARD_VENDOR_CMDLINE += bootconfig
+BOARD_KERNEL_CMDLINE := \
+    bootconfig \
+    buildtime_bootconfig=enable \
+    loop.max_part=7
 BOARD_KERNEL_SEPARATED_DTBO := true
 TARGET_IS_64_BIT := true
 
 # Mkbootimg
-BOARD_MKBOOTIMG_ARGS += --vendor_cmdline $(BOARD_VENDOR_CMDLINE)
 BOARD_MKBOOTIMG_ARGS += --pagesize $(BOARD_KERNEL_PAGESIZE) --board ""
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
