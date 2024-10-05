@@ -23,8 +23,8 @@ AB_OTA_POSTINSTALL_CONFIG += \
 
 # Boot control HAL
 PRODUCT_PACKAGES += \
-    android.hardware.boot@1.2-impl-exynos \
-    android.hardware.boot@1.2-impl-exynos.recovery \
+    android.hardware.boot@1.2-impl \
+    android.hardware.boot@1.2-impl.recovery \
     android.hardware.boot@1.2-service
 
 AB_OTA_POSTINSTALL_CONFIG += \
@@ -33,15 +33,12 @@ AB_OTA_POSTINSTALL_CONFIG += \
     FILESYSTEM_TYPE_system=erofs \
     POSTINSTALL_OPTIONAL_system=true
 
-AB_OTA_POSTINSTALL_CONFIG += \
-    RUN_POSTINSTALL_vendor=true \
-    POSTINSTALL_PATH_vendor=bin/checkpoint_gc \
-    FILESYSTEM_TYPE_vendor=erofs \
-    POSTINSTALL_OPTIONAL_vendor=true
-
 PRODUCT_PACKAGES += \
     android.hardware.fastboot@1.0-impl-mock \
     fastbootd 
+
+PRODUCT_PACKAGES += \
+    bootctrl.erd8845
 
 PRODUCT_PACKAGES += \
     fstab.s5e8845
