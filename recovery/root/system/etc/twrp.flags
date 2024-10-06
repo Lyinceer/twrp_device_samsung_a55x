@@ -1,22 +1,29 @@
 # Physical Partitions
-/boot           emmc  /dev/block/by-name/boot                       flags=display="Boot";slotselect;backup=1;flashimg
-/init_boot      emmc  /dev/block/by-name/init_boot                  flags=display="Init Boot";slotselect;backup=1;flashimg
-/vendor_boot	emmc		/dev/block/bootdevice/by-name/vendor_boot	flags=backup=1;flashimg=1;display="Vendor Boot"
-/dtbo           emmc  /dev/block/by-name/dtbo                       flags=display="DTBO";slotselect;backup=1;flashimg
-/vbmeta         emmc  /dev/block/by-name/vbmeta                     flags=display="vbmeta";slotselect;backup=1;flashimg
-/vbmeta_system  emmc  /dev/block/by-name/vbmeta_system              flags=display="vbmeta system";slotselect;backup=1;flashimg
-/mnt/vendor/efs ext4  /dev/block/by-name/efs                        flags=display="EFS";slotselect;backup=1
-/efs            ext4    /dev/block/by-name/sec_efs                  flags=display="SEC_EFS";slotselect;backup=1
-/slotinfo       emmc  /dev/block/by-name/slotinfo                   flags=display="Slotinfo";backup=1
+# mount point	fstype		device			device2			flags
 
-/vendor_image	emmc		/dev/block/by-name/vendor		flags=backup=1;flashimg=1
+/boot		emmc		/dev/block/bootdevice/by-name/boot
+/dtbo		emmc		/dev/block/bootdevice/by-name/dtbo		flags=backup=1;flashimg=1;display="DTBO"
+/init_boot	emmc		/dev/block/bootdevice/by-name/init_boot	flags=backup=1;flashimg=1
+/recovery	emmc		/dev/block/bootdevice/by-name/recovery		flags=backup=1
+/vendor_boot	emmc		/dev/block/bootdevice/by-name/vendor_boot	flags=backup=1;flashimg=1;display="Vendor Boot"
+
+/system_dlkm	erofs		/dev/block/bootdevice/by-name/system_dlkm		flags=display="System DLKM"
+/system_image	emmc		/dev/block/bootdevice/by-name/system		flags=backup=1;flashimg=1
+/odm_image	emmc		/dev/block/bootdevice/by-name/odm		flags=backup=1;flashimg=1;display="ODM Image"
+/product_image	emmc		/dev/block/bootdevice/by-name/product		flags=backup=1;flashimg=1;display="Product Image"
+/system_dlkm_image	emmc		/dev/block/bootdevice/by-name/system_dlkm		flags=backup=1;flashimg=1;display="System DLKM Image"
+/vendor_image	emmc		/dev/block/bootdevice/by-name/vendor		flags=backup=1;flashimg=1
+/vendor_dlkm_image	emmc		/dev/block/bootdevice/by-name/vendor_dlkm		flags=backup=1;flashimg=1;display="Vendor DLKM Image"
+/slotinfo       emmc  /dev/block/by-name/slotinfo                   flags=display="Slotinfo";backup=1
 
 #CSC
 /prism          ext4  /dev/block/by-name/prism                      flags=display="Prism";slotselect;backup=1;flashimg
 /optics         ext4  /dev/block/by-name/optics                     flags=display="Optics";slotselect;backup=1;flashimg
 
-#Data
+# Data
 /cache          ext4  /dev/block/by-name/cache	                    flags=display="Cache";backup=1
+/efs		ext4		/dev/block/bootdevice/by-name/efs		flags=backup=1;display="EFS"
+/sec_efs	ext4		/dev/block/bootdevice/by-name/sec_efs		flags=backup=1;display="Sec EFS"
 
 # External Stuff
 /external_sd        vfat         /dev/block/mmcblk0p1 /dev/block/mmcblk0   flags=display="External SDCard";storage;wipeingui;removable;
