@@ -1,13 +1,15 @@
 # Physical Partitions
 /boot           emmc  /dev/block/by-name/boot                       flags=display="Boot";slotselect;backup=1;flashimg
 /init_boot      emmc  /dev/block/by-name/init_boot                  flags=display="Init Boot";slotselect;backup=1;flashimg
-/vendor_boot    emmc  /dev/block/by-name/vendor_boot                flags=display="Vendor Boot";slotselect;backup=1;flashimg
+/vendor_boot	emmc		/dev/block/bootdevice/by-name/vendor_boot	flags=backup=1;flashimg=1;display="Vendor Boot"
 /dtbo           emmc  /dev/block/by-name/dtbo                       flags=display="DTBO";slotselect;backup=1;flashimg
 /vbmeta         emmc  /dev/block/by-name/vbmeta                     flags=display="vbmeta";slotselect;backup=1;flashimg
 /vbmeta_system  emmc  /dev/block/by-name/vbmeta_system              flags=display="vbmeta system";slotselect;backup=1;flashimg
 /mnt/vendor/efs ext4  /dev/block/by-name/efs                        flags=display="EFS";slotselect;backup=1
 /efs            ext4    /dev/block/by-name/sec_efs                  flags=display="SEC_EFS";slotselect;backup=1
 /slotinfo       emmc  /dev/block/by-name/slotinfo                   flags=display="Slotinfo";backup=1
+
+/vendor_image	emmc		/dev/block/by-name/vendor		flags=backup=1;flashimg=1
 
 #CSC
 /prism          ext4  /dev/block/by-name/prism                      flags=display="Prism";slotselect;backup=1;flashimg
