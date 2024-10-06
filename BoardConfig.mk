@@ -182,5 +182,9 @@ TW_INCLUDE_NTFS_3G := true
 # TWRP Configuration - Vendor Modules
 TW_LOAD_VENDOR_BOOT_MODULES := true
 
+# Vendor Boot
+BOARD_MOVE_RECOVERY_RESOURCES_TO_VENDOR_BOOT := true
+BOARD_INCLUDE_RECOVERY_RAMDISK_IN_VENDOR_BOOT := true
+
 # Workaround for copyout error
 TARGET_COPY_OUT_VENDOR := vendor
