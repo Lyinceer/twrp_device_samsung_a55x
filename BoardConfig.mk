@@ -124,13 +124,7 @@ BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := erofs
 # Partitions - Super/Logical
 BOARD_SUPER_PARTITION_SIZE := 9126805504 # TODO: Fix hardcoded value
 BOARD_SUPER_PARTITION_GROUPS := samsung_dynamic_partitions
-BOARD_SAMSUNG_DYNAMIC_PARTITIONS_PARTITION_LIST := \
-    vendor_dlkm \
-    system_dlkm \
-    vendor \
-    odm \
-    system \
-    product
+BOARD_SAMSUNG_DYNAMIC_PARTITIONS_PARTITION_LIST := system vendor product system_ext odm vendor_dlkm odm_dlkm
 BOARD_SAMSUNG_DYNAMIC_PARTITIONS_SIZE := 9122611200 # TODO: Fix hardcoded value
 
 # GSI && GKI
