@@ -172,7 +172,7 @@ TW_NO_LEGACY_PROPS := true
 TW_NO_REBOOT_BOOTLOADER := true
 
 # TWRP Configuration - Version
-TW_DEVICE_VERSION := A556E-02
+TW_DEVICE_VERSION := A556E_02
 
 # TWRP Configuration - Excludes
 TW_EXCLUDE_APEX := true
