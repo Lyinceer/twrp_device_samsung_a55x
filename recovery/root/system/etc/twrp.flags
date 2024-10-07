@@ -1,30 +1,27 @@
 # Physical Partitions
 # mount point	fstype		device			device2			flags
 
-/boot		emmc		/dev/block/bootdevice/by-name/boot
-/dtbo		emmc		/dev/block/bootdevice/by-name/dtbo		flags=backup=1;flashimg=1;display="DTBO"
-/init_boot	emmc		/dev/block/bootdevice/by-name/init_boot	flags=backup=1;flashimg=1
-/recovery	emmc		/dev/block/bootdevice/by-name/recovery		flags=backup=1
-/vendor_boot	emmc		/dev/block/bootdevice/by-name/vendor_boot	flags=backup=1;flashimg=1;display="Vendor Boot"
-
-/system_dlkm	erofs		/dev/block/bootdevice/by-name/system_dlkm		flags=display="System DLKM"
-/system_image	emmc		/dev/block/bootdevice/by-name/system		flags=backup=1;flashimg=1
-/odm_image	emmc		/dev/block/bootdevice/by-name/odm		flags=backup=1;flashimg=1;display="ODM Image"
-/product_image	emmc		/dev/block/bootdevice/by-name/product		flags=backup=1;flashimg=1;display="Product Image"
-/system_dlkm_image	emmc		/dev/block/bootdevice/by-name/system_dlkm		flags=backup=1;flashimg=1;display="System DLKM Image"
-/vendor_image	emmc		/dev/block/bootdevice/by-name/vendor		flags=backup=1;flashimg=1
-/vendor_dlkm_image	emmc		/dev/block/bootdevice/by-name/vendor_dlkm		flags=backup=1;flashimg=1;display="Vendor DLKM Image"
-/slotinfo       emmc  /dev/block/by-name/slotinfo                   flags=display="Slotinfo";backup=1
+/boot           emmc  /dev/block/by-name/boot                       flags=display="Boot";slotselect;backup=1;flashimg
+/init_boot      emmc  /dev/block/by-name/init_boot                  flags=slotselect;backup=1;flashimg;display="Init Boot"
+/vendor_boot    emmc  /dev/block/by-name/vendor_boot                flags=slotselect;backup=1;flashimg;display="Vendor Boot"
+/dtbo           emmc  /dev/block/by-name/dtbo                       flags=slotselect;backup=1;flashimg;display="DTBO"
+/vbmeta         emmc  /dev/block/by-name/vbmeta                     flags=slotselect;backup=1;flashimg;display="vbmeta"
+/vbmeta_system  emmc  /dev/block/by-name/vbmeta_system              flags=slotselect;backup=1;flashimg;display="vbmeta system"
+/super			emmc  /dev/block/by-name/super						flags=display="Super";slotselect;backup=1;flashimg
+/slotinfo       emmc  /dev/block/by-name/slotinfo                   flags=backup=1;display="Slotinfo"
+/userdata		emmc  /dev/block/by-name/userdata					flags=backup=1;display="Userdata"
 
 #CSC
 /prism          ext4  /dev/block/by-name/prism                      flags=display="Prism";slotselect;backup=1;flashimg
 /optics         ext4  /dev/block/by-name/optics                     flags=display="Optics";slotselect;backup=1;flashimg
 
 # Data
-/cache          ext4  /dev/block/by-name/cache	                    flags=display="Cache";backup=1
+/cache		ext4		/dev/block/bootdevice/by-name/cache		flags=backup=1;display="Cache"
 /efs		ext4		/dev/block/bootdevice/by-name/efs		flags=backup=1;display="EFS"
 /sec_efs	ext4		/dev/block/bootdevice/by-name/sec_efs		flags=backup=1;display="Sec EFS"
 
 # External Stuff
 /external_sd        vfat         /dev/block/mmcblk0p1 /dev/block/mmcblk0   flags=display="External SDCard";storage;wipeingui;removable;
 /usb-otg            vfat         /dev/block/sdf /dev/block/sdf1            flags=display="USB OTG";storage;wipeingui;removable;
+
+flags=display="Cache";backup=1
