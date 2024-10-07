@@ -6,22 +6,6 @@
 
 DEVICE_PATH := device/samsung/a55x
 
-# A/B
-AB_OTA_UPDATER := true
-AB_OTA_PARTITIONS += \
-    vendor_dlkm \
-    dtbo \
-    vendor_boot \
-    system_dlkm \
-    vendor \
-    init_boot \
-    vbmeta \
-    odm \
-    system \
-    vbmeta_system \
-    boot \
-    product
-
 # Allow for building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true
 
