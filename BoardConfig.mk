@@ -6,6 +6,22 @@
 
 DEVICE_PATH := device/samsung/a55x
 
+# A/B
+AB_OTA_UPDATER := true
+AB_OTA_PARTITIONS += \
+    vendor_dlkm \
+    dtbo \
+    vendor_boot \
+    system_dlkm \
+    vendor \
+    init_boot \
+    vbmeta \
+    odm \
+    system \
+    vbmeta_system \
+    boot \
+    product
+
 # Allow for building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true
 
@@ -25,8 +41,6 @@ DEXPREOPT_GENERATE_APEX_IMAGE := true
 BOARD_AVB_ENABLE := true
 
 # Bootloader
-BOARD_VENDOR := samsung
-TARGET_SOC := s5e8845
 TARGET_BOOTLOADER_BOARD_NAME := s5e8845
 TARGET_NO_RADIOIMAGE := true
 TARGET_NO_BOOTLOADER := true
@@ -46,14 +60,6 @@ TARGET_USES_UEFI := true
 BUILD_BROKEN_DUP_RULES := true
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 
-# Crypto
-TW_INCLUDE_CRYPTO := true
-TW_INCLUDE_CRYPTO_FBE := true
-TW_INCLUDE_FBE_METADATA_DECRYPT := true
-TW_PREPARE_DATA_MEDIA_EARLY := true
-TW_SKIP_ADDITIONAL_FSTAB := true # Let recovery.fstab define in the tree be only source for fstab.
-TW_FORCE_KEYMASTER_VER := true # Note that this is just a dummy value, because stock don't actually have keymaster, only keymint.
-
 # Debug
 TARGET_USES_LOGD := true
 TWRP_INCLUDE_LOGCAT := true
@@ -68,7 +74,7 @@ TARGET_SCREEN_HEIGHT := 2340
 TARGET_SCREEN_WIDTH := 1080
 
 # DTBs
-TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb
+TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb.img
 
 # Kernel - Image
 BOARD_KERNEL_IMAGE_NAME := Image
@@ -83,7 +89,6 @@ BOARD_KERNEL_PAGESIZE:= 2048
 BOARD_RAMDISK_OFFSET := 0x00000000
 BOARD_KERNEL_TAGS_OFFSET := 0x00000000
 BOARD_KERNEL_CMDLINE += bootconfig loop.max_part=7
-BOARD_KERNEL_SEPARATED_DTBO := true
 TARGET_IS_64_BIT := true
 
 # Mkbootimg
@@ -117,10 +122,16 @@ BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := erofs
 
 # Partitions - Super/Logical
-BOARD_SUPER_PARTITION_SIZE := 9666725824 # TODO: Fix hardcoded value
+BOARD_SUPER_PARTITION_SIZE := 9126805504 # TODO: Fix hardcoded value
 BOARD_SUPER_PARTITION_GROUPS := samsung_dynamic_partitions
-BOARD_SAMSUNG_DYNAMIC_PARTITIONS_PARTITION_LIST := system vendor vendor_dlkm product odm
-BOARD_SAMSUNG_DYNAMIC_PARTITIONS_SIZE := 9666725824 # TODO: Fix hardcoded value
+BOARD_SAMSUNG_DYNAMIC_PARTITIONS_PARTITION_LIST := \
+    vendor_dlkm \
+    system_dlkm \
+    vendor \
+    odm \
+    system \
+    product
+BOARD_SAMSUNG_DYNAMIC_PARTITIONS_SIZE := 9122611200 # TODO: Fix hardcoded value
 
 # GSI && GKI
 BOARD_MOVE_GSI_AVB_KEYS_TO_VENDOR_BOOT := true
