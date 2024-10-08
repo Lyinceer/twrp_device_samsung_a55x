@@ -11,6 +11,10 @@
 /slotinfo       emmc  /dev/block/by-name/slotinfo                   flags=backup=1;display="Slotinfo"
 /userdata		emmc  /dev/block/by-name/userdata					flags=backup=1;display="Userdata"
 
+# System and Vendor Images
+/system_image	emmc		/dev/block/bootdevice/by-name/system		flags=backup=1;flashimg=1;display="System Image"
+/vendor_image	emmc		/dev/block/bootdevice/by-name/vendor		flags=backup=1;flashimg=1;display="Vendor Image"
+
 #CSC
 /prism          ext4  /dev/block/by-name/prism                      flags=display="Prism";slotselect;backup=1;flashimg
 /optics         ext4  /dev/block/by-name/optics                     flags=display="Optics";slotselect;backup=1;flashimg
@@ -23,5 +27,3 @@
 # External Stuff
 /external_sd        vfat         /dev/block/mmcblk0p1 /dev/block/mmcblk0   flags=display="External SDCard";storage;wipeingui;removable;
 /usb-otg            vfat         /dev/block/sdf /dev/block/sdf1            flags=display="USB OTG";storage;wipeingui;removable;
-
-flags=display="Cache";backup=1
