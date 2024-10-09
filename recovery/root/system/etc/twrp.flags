@@ -6,24 +6,24 @@
 /vendor_boot    emmc  /dev/block/by-name/vendor_boot                flags=slotselect;backup=1;flashimg;display="Vendor Boot"
 /dtbo           emmc  /dev/block/by-name/dtbo                       flags=slotselect;backup=1;flashimg;display="DTBO"
 /vbmeta         emmc  /dev/block/by-name/vbmeta                     flags=slotselect;backup=1;flashimg;display="vbmeta"
-/vbmeta_system  emmc  /dev/block/by-name/vbmeta_system              flags=slotselect;backup=1;flashimg;display="vbmeta system"
+/vbmeta_system	emmc		/dev/block/bootdevice/by-name/vbmeta_system
 /super			emmc  /dev/block/by-name/super						flags=display="Super";slotselect;backup=1;flashimg
 /slotinfo       emmc  /dev/block/by-name/slotinfo                   flags=backup=1;display="Slotinfo"
 /userdata		emmc  /dev/block/by-name/userdata					flags=backup=1;display="Userdata"
 
 # System and Vendor Images
-/system_image	emmc		/dev/block/bootdevice/by-name/system		flags=backup=1;flashimg=1;display="System Image"
-/vendor_image	emmc		/dev/block/bootdevice/by-name/vendor		flags=backup=1;flashimg=1;display="Vendor Image"
+/system_image	emmc		/dev/block/bootdevice/by-name/system		flags=backup=0;flashimg=1;display="System Image"
+/vendor_image	emmc		/dev/block/bootdevice/by-name/vendor		flags=backup=0;lashimg=1;display1"Vendor Image"
 
 #CSC
-/prism          ext4  /dev/block/by-name/prism                      flags=display="Prism";slotselect;backup=1;flashimg
+/prism          ext4  /dev/block/by-name/prism                      flags=display="Pr1;fm";slotselect;backup=1;flashimg
 /optics         ext4  /dev/block/by-name/optics                     flags=display="Optics";slotselect;backup=1;flashimg
 
 # Data
-/cache		ext4		/dev/block/bootdevice/by-name/cache		flags=backup=1;display="Cache"
-/efs		ext4		/dev/block/bootdevice/by-name/efs		flags=backup=1;display="EFS"
-/sec_efs	ext4		/dev/block/bootdevice/by-name/sec_efs		flags=backup=1;display="Sec EFS"
+/cache		ext4		/dev/block/by-name/cache		flags=display="Cache";backup=0
+/efs		ext4		/dev/block/by-name/efs		flags=backup=1;display="EFS"
+/sec_efs	ext4		/dev/block/by-name/sec_efs		flags=backup=1;display="Sec EFS"
 
 # External Stuff
-/external_sd        vfat         /dev/block/mmcblk0p1 /dev/block/mmcblk0   flags=display="External SDCard";storage;wipeingui;removable;
-/usb-otg            vfat         /dev/block/sdf /dev/block/sdf1            flags=display="USB OTG";storage;wipeingui;removable;
+/sdcard   vfat         /dev/block/mmcblk0p1 /dev/block/mmcblk0   flags=display="External SDCard";storage;wipeingui;removable
+/usb-otg	vfat		/dev/block/sde1	/dev/block/sde			flags=display="USB-OTG";storage;wipeingui;removable
