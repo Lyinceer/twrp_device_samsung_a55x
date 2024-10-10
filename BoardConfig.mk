@@ -9,6 +9,23 @@ DEVICE_PATH := device/samsung/a55x
 # Allow for building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true
 
+# A/B
+AB_OTA_UPDATER := true
+
+AB_OTA_PARTITIONS += \
+    vendor_dlkm \
+    dtbo \
+    vendor_boot \
+    system_dlkm \
+    vendor \
+    init_boot \
+    vbmeta \
+    odm \
+    system \
+    vbmeta_system \
+    boot \
+    product
+
 # Architecture
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
@@ -113,7 +130,7 @@ BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := erofs
 # Partitions - Super/Logical
 BOARD_SUPER_PARTITION_SIZE := 9126805504 # TODO: Fix hardcoded value
 BOARD_SUPER_PARTITION_GROUPS := samsung_dynamic_partitions
-BOARD_SAMSUNG_DYNAMIC_PARTITIONS_PARTITION_LIST := system vendor product system_ext odm vendor_dlkm odm_dlkm
+BOARD_SAMSUNG_DYNAMIC_PARTITIONS_PARTITION_LIST := system odm product vendor system_ext vendor_dlkm odm_dlkm
 BOARD_SAMSUNG_DYNAMIC_PARTITIONS_SIZE := 9122611200 # TODO: Fix hardcoded value
 
 # GSI && GKI
