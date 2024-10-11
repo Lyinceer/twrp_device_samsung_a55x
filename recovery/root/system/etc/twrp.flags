@@ -12,7 +12,6 @@
 # Logical Points
 system              /system      ext4        ro,barrier=1,discard                wait,logical,first_stage_mount
 system              /system      f2fs        ro,barrier=1,discard                wait,logical,first_stage_mount
-system              /system      erofs       ro                                  wait,logical,first_stage_mount
 vendor              /vendor      ext4        ro,barrier=1,discard                wait,logical,first_stage_mount
 vendor              /vendor      erofs       ro                                  wait,logical,first_stage_mount
 product             /product     ext4        ro,barrier=1,discard                wait,logical,first_stage_mount
@@ -20,10 +19,11 @@ product             /product     erofs       ro                                 
 odm                 /odm         ext4        ro,barrier=1,discard                wait,logical,first_stage_mount
 odm                 /odm         erofs       ro                                  wait,logical,first_stage_mount
 
-   # Superimage Logical Partitions
-   /system_image   emmc      /dev/block/bootdevice/by-name/system       flags=display="System_Image";backup=1;flashimg=1;slotselect
-   /vendor_image   emmc      /dev/block/bootdevice/by-name/vendor       flags=display="Vendor_Image";backup=1;flashimg=1;slotselect
-   /product_image  emmc      /dev/block/bootdevice/by-name/product      flags=display="Product_Image";backup=1;flashimg=1;slotselect
+# Superimage Logical Partitions
+/system_image   emmc      /dev/block/by-name/system       flags=display="System_Image";backup=1;flashimg=1;slotselect
+/vendor_image   emmc      /dev/block/by-name/vendor       flags=display="Vendor_Image";backup=1;flashimg=1;slotselect
+/product_image  emmc      /dev/block/by-name/product      flags=display="Product_Image";backup=1;flashimg=1;slotselect
+
 #CSC
 /prism          ext4  /dev/block/by-name/prism                      flags=display="Prism";slotselect;backup=1;flashimg
 /optics         ext4  /dev/block/by-name/optics                     flags=display="Optics";slotselect;backup=1;flashimg
