@@ -19,7 +19,7 @@
 /optics         ext4  /dev/block/by-name/optics                     flags=display="Optics";slotselect;backup=1;flashimg
 
 # Data
-/cache		ext4		/dev/block/by-name/cache		flags=display="Cache";backup=0
+/cache				ext4         /dev/block/by-name/cache             flags=display="Cache";backup=0
 /mnt/vendor/efs     ext4         /dev/block/by-name/efs               flags=display="EFS";backup=1
 /sec_efs            ext4         /dev/block/by-name/sec_efs           flags=display="Sec EFS";backup=1
 
