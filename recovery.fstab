@@ -22,5 +22,5 @@ odm         /odm            erofs	ro	wait,logical,first_stage_mount,avb
 /dev/block/by-name/misc	/misc	emmc	defaults	defaults,first_stage_mount
 
 # USB
-/devices/platform/13200000.usb*                 auto                  vfat      default              voldmanaged=usb:auto
-/devices/platform/12be0000.dwmmc2/mmc_host*     auto                  auto      default              voldmanaged=sdcard:auto
+#/devices/platform/13200000.usb*                 auto                  vfat      default              voldmanaged=usb:auto
+#/devices/platform/12be0000.dwmmc2/mmc_host*     auto                  auto      default              voldmanaged=sdcard:auto
