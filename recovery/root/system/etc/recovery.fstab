@@ -21,8 +21,8 @@ system_ext                                              /system_ext            e
 system_dlkm                                             /system_dlkm           erofs   ro                                                                                              wait,slotselect,logical
 
 # Data partition
-/dev/block/by-name/metadata			/metadata	f2fs	noatime,nosuid,nodev,discard,sync,fsync_mode=strict,data_flush	wait,formattable,check
-/dev/block/sda53					/data		f2fs	noatime,nosuid,nodev,discard   latemount,wait,check
+/dev/block/by-name/metadata                             /metadata              f2fs	noatime,nosuid,nodev,discard,sync,fsync_mode=strict,data_flush	wait,formattable,check
+/dev/block/sda53                                        /data		           f2fs	noatime,nosuid,nodev,discard   latemount,wait,check
 
 # Misc
 /dev/block/bootdevice/by-name/misc		/misc		emmc	defaults		defaults,first_stage_mount
