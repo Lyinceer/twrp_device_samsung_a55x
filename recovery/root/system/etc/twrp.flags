@@ -9,16 +9,6 @@
 /super			emmc  /dev/block/by-name/super						flags=display="Super";slotselect;backup=1;flashimg
 /slotinfo       emmc  /dev/block/by-name/slotinfo                   flags=backup=1;display="Slotinfo"
 
-# Logical Points
-system              /system      ext4        ro,barrier=1,discard                wait,logical,first_stage_mount
-system              /system      f2fs        ro,barrier=1,discard                wait,logical,first_stage_mount
-vendor              /vendor      ext4        ro,barrier=1,discard                wait,logical,first_stage_mount
-vendor              /vendor      erofs       ro                                  wait,logical,first_stage_mount
-product             /product     ext4        ro,barrier=1,discard                wait,logical,first_stage_mount
-product             /product     erofs       ro                                  wait,logical,first_stage_mount
-odm                 /odm         ext4        ro,barrier=1,discard                wait,logical,first_stage_mount
-odm                 /odm         erofs       ro                                  wait,logical,first_stage_mount
-
 # Superimage Logical Partitions
 /system_image   emmc      /dev/block/by-name/system       flags=display="System_Image";backup=1;flashimg=1;slotselect
 /vendor_image   emmc      /dev/block/by-name/vendor       flags=display="Vendor_Image";backup=1;flashimg=1;slotselect
