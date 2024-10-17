@@ -7,5 +7,5 @@ Clone the following repository and use the git actions builder written by cd-Cry
 [Link](https://github.com/TheNoobDevs/samsung_a55x_vendorbootimage-builder)
 
 ## Credits
-- [TheNoobDevs](https://github.com/TheNoobDevs)
+- TheNoobDevs
 - [lopestom](https://github.com/lopestom)
