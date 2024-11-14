@@ -15,23 +15,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 # Configure emulated_storage.mk
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
-# A/B
-AB_OTA_UPDATER := true
-
-AB_OTA_PARTITIONS += \
-    vendor_dlkm \
-    dtbo \
-    vendor_boot \
-    system_dlkm \
-    vendor \
-    init_boot \
-    vbmeta \
-    odm \
-    system \
-    vbmeta_system \
-    boot \
-    product
-
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
     POSTINSTALL_PATH_system=system/bin/otapreopt_script \
@@ -67,15 +50,3 @@ PRODUCT_SHIPPING_API_LEVEL := 32
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
-	
-# Vendor
-PRODUCT_PACKAGES += \
-    mkshrc_vendor \
-    toybox_vendor \
-    sh_vendor
-	
-# Vendor Boot Platform
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/platform/vangogh_lite_unified_evt0.bin:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/lib/firmware/sgpu/vangogh_lite_unified_evt0.bin \
-    $(LOCAL_PATH)/prebuilt/platform/vangogh_lite_unified_evt0.bin:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/firmware/sgpu/vangogh_lite_unified_evt0.bin \
-    $(LOCAL_PATH)/prebuilt/platform/gt9895_a55x.bin:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/vendor/firmware/tsp/gt9895_a55x.bin

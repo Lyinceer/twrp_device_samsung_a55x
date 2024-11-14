@@ -5,7 +5,7 @@
 /vendor_boot    emmc  /dev/block/by-name/vendor_boot                flags=slotselect;backup=1;flashimg;display="Vendor Boot"
 /dtbo           emmc  /dev/block/by-name/dtbo                       flags=slotselect;backup=1;flashimg;display="DTBO"
 /vbmeta         emmc  /dev/block/by-name/vbmeta                     flags=slotselect;backup=1;flashimg;display="vbmeta"
-/vbmeta_system	emmc		/dev/block/by-name/vbmeta_system
+/vbmeta_system	emmc		/dev/block/by-name/vbmeta_system		flags=display="vbmeta system";slotselect;backup=1;flashimg
 /super			emmc  /dev/block/by-name/super						flags=display="Super";slotselect;backup=1;flashimg
 /slotinfo       emmc  /dev/block/by-name/slotinfo                   flags=backup=1;display="Slotinfo"
 
@@ -20,8 +20,8 @@
 
 # Data
 /cache				ext4         /dev/block/by-name/cache             flags=display="Cache";backup=0
-/mnt/vendor/efs     ext4         /dev/block/by-name/efs               flags=display="EFS";backup=1
-/sec_efs            ext4         /dev/block/by-name/sec_efs           flags=display="Sec EFS";backup=1
+/mnt/vendor/efs     ext4         /dev/block/by-name/efs               flags=display="EFS";slotselect;backup=1
+/sec_efs            ext4         /dev/block/by-name/sec_efs           flags=display="SEC_EFS";slotselect;backup=1
 
 # External Stuff
 /external_sd        vfat         /dev/block/mmcblk0p1 /dev/block/mmcblk0   flags=display="Micro SDCard";storage;wipeingui;removable

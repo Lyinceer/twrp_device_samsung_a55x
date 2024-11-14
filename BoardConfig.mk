@@ -9,6 +9,22 @@ DEVICE_PATH := device/samsung/a55x
 # Allow for building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true
 
+# A/B
+AB_OTA_UPDATER := true
+AB_OTA_PARTITIONS += \
+    vendor_dlkm \
+    dtbo \
+    vendor_boot \
+    system_dlkm \
+    vendor \
+    init_boot \
+    vbmeta \
+    odm \
+    system \
+    vbmeta_system \
+    boot \
+    product
+
 # Architecture
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
@@ -18,20 +34,9 @@ TARGET_CPU_ABI2 :=
 TARGET_CPU_VARIANT := generic
 TARGET_CPU_VARIANT_RUNTIME := cortex-a76
 
-# APEX
-DEXPREOPT_GENERATE_APEX_IMAGE := true
-
-# AVB
-BOARD_AVB_ENABLE := true
-BOARD_AVB_VENDOR_BOOT_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
-BOARD_AVB_VENDOR_BOOT_ALGORITHM := SHA256_RSA4096
-BOARD_AVB_VENDOR_BOOT_ROLLBACK_INDEX := 1
-BOARD_AVB_VENDOR_BOOT_ROLLBACK_INDEX_LOCATION := 1
-
 # Additional flags
 TW_INCLUDE_FBE_METADATA_DECRYPT := true
 TW_PREPARE_DATA_MEDIA_EARLY := true
-TW_SKIP_ADDITIONAL_FSTAB := true # Let recovery.fstab define in the tree be only source for fstab.
 TW_FORCE_KEYMASTER_VER := true
 
 # Bootloader
@@ -129,6 +134,7 @@ TARGET_BOARD_PLATFORM := erd8845
 
 # Properties
 TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery.fstab
 
 # Recovery
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
