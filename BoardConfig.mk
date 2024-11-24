@@ -146,6 +146,10 @@ RECOVERY_SDCARD_ON_DATA := true
 # Recovery
 TARGET_NO_RECOVERY := true
 
+# <Recovery TG>  #
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/recovery/root/init.recovery.samsung.rc
+
 # Ramdisk
 BOARD_RAMDISK_USE_LZ4 := true
 
