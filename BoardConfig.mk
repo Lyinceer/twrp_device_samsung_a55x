@@ -37,7 +37,7 @@ TARGET_CPU_VARIANT_RUNTIME := cortex-a76
 # Additional flags
 TW_INCLUDE_FBE_METADATA_DECRYPT := true
 TW_PREPARE_DATA_MEDIA_EARLY := true
-TW_FORCE_KEYMASTER_VER := true
+TW_FORCE_KEYMASTER_VER := true # Note that this is just a dummy value, because stock don't actually have keymaster, only keymint.
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := s5e8845
@@ -58,6 +58,11 @@ TARGET_USES_UEFI := true
 # Build Broken
 BUILD_BROKEN_DUP_RULES := true
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
+
+# Crypto
+TW_INCLUDE_CRYPTO := true
+TW_INCLUDE_CRYPTO_FBE := true
+TW_SKIP_ADDITIONAL_FSTAB := true # Let recovery.fstab define in the tree be only source for fstab.
 
 # Debug
 TARGET_USES_LOGD := true
@@ -91,7 +96,7 @@ BOARD_KERNEL_CMDLINE += bootconfig loop.max_part=7
 TARGET_IS_64_BIT := true
 
 # Mkbootimg
-BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
+BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION) --board "SRPWK16A004"
 BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
@@ -134,14 +139,13 @@ TARGET_BOARD_PLATFORM := erd8845
 
 # Properties
 TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery.fstab
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
 
 # Recovery
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 TARGET_USES_MKE2FS := true
-RECOVERY_SDCARD_ON_DATA := true
 
 # Recovery
 TARGET_NO_RECOVERY := true
@@ -196,6 +200,11 @@ TW_LOAD_VENDOR_BOOT_MODULES := true
 # Vendor Boot
 BOARD_MOVE_RECOVERY_RESOURCES_TO_VENDOR_BOOT := true
 BOARD_INCLUDE_RECOVERY_RAMDISK_IN_VENDOR_BOOT := true
+
+# Vendor Boot DLKM
+BOARD_VENDOR_RAMDISK_FRAGMENTS := dlkm
+BOARD_VENDOR_RAMDISK_FRAGMENT.dlkm.PREBUILT := $(DEVICE_PATH)/prebuilt/dlkm/vendor_ramdisk_dlkm.cpio.lz4
+BOARD_VENDOR_RAMDISK_FRAGMENT.dlkm.MKBOOTIMG_ARGS := --board_id2 0x0 --ramdisk_type DLKM
 
 # Workaround for copyout error
 TARGET_COPY_OUT_VENDOR := vendor
