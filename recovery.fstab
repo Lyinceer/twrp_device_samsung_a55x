@@ -7,9 +7,10 @@ system	/system	erofs	ro	slotselect,wait,logical,first_stage_mount,avb=vbmeta_sys
 system	/system	f2fs	ro	slotselect,wait,logical,first_stage_mount,avb=vbmeta_system,avb_keys=/avb
 system	/system	ext4	ro	slotselect,wait,logical,first_stage_mount,avb=vbmeta_system,avb_keys=/avb
 vendor	/vendor	erofs	ro	slotselect,wait,logical,first_stage_mount,avb=vbmeta_system
-vendor_dlkm	/vendor_dlkm	erofs	ro	slotselect,wait,logical,first_stage_mount
-system_dlkm	/system_dlkm	f2fs	ro	slotselect,wait,logical,first_stage_mount
-system_dlkm	/system_dlkm	ext4	ro	slotselect,wait,logical,first_stage_mount
+vendor_dlkm	/vendor_dlkm	erofs	ro	slotselect,wait,logical,first_stage_mount,avb
+system_dlkm	/system_dlkm	f2fs	ro	slotselect,wait,logical,first_stage_mount,avb
+system_dlkm /system_dlkm      erofs ro    slotselect,wait,logical,first_stage_mount,avb
+system_dlkm	/system_dlkm	ext4	ro	slotselect,wait,logical,first_stage_mount,avb
 product     /product        erofs	ro	slotselect,wait,logical,first_stage_mount,avb
 odm         /odm            erofs	ro	slotselect,wait,logical,first_stage_mount,avb
 
@@ -26,8 +27,20 @@ odm         /odm            erofs	ro	slotselect,wait,logical,first_stage_mount,a
 /dev/block/by-name/slotinfo	/slotinfo	emmc	defaults	defaults
 
 # Data
-/dev/block/by-name/metadata  /metadata          f2fs      noatime,nosuid,nodev,sync                            wait,formattable,first_stage_mount,check
-/dev/block/by-name/userdata  /data              f2fs      rw,noatime,nosuid,nodev,discard,reserve_root=32768,resgid=1065,fsync_mode=nobarrier latemount,wait,check,quota,checkpoint=fs,formattable
+/dev/block/by-name/metadata  /metadata          f2fs      noatime,nosuid,nodev,discard,sync,fsync_mode=strict,data_flush	wait,formattable,first_stage_mount,check
+/dev/block/by-name/userdata  /data              f2fs      noatime,nosuid,nodev,discard,usrquota,grpquota,fsync_mode=nobarrier,reserve_root=32768,resgid=5678,inlinecrypt	latemount,wait,check,quota,checkpoint=fs,,ddp,reservedsize=128M,fscompress,fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized+wrappedkey_v0,metadata_encryption=aes-256-xts:wrappedkey_v0,keydirectory=/metadata/vold/metadata_encryption
 
 # Boot
 /dev/block/by-name/misc	/misc	emmc	defaults	defaults,first_stage_mount
+
+# VOLD
+/devices/platform/13200000.usb*                    auto                vfat      default                                               voldmanaged=usb:auto
+/devices/platform/12be0000.dwmmc2/mmc_host*        auto                auto      default                                               voldmanaged=sdcard:auto
+
+# External Stuff
+/external_sd        vfat         /dev/block/mmcblk0p1 /dev/block/mmcblk0   flags=display="Micro SDCard";storage;wipeingui;removable
+/usb-otg            vfat         /dev/block/sde /dev/block/sde1            flags=display="USB OTG";storage;wipeingui;removable
+
+#CSC
+/dev/block/by-name/prism        /prism                  ext4    ro,barrier=1    slotselect,nofail,avb,first_stage_mount
+/dev/block/by-name/optics       /optics                 ext4    ro,barrier=1    slotselect,nofail,avb,first_stage_mount

@@ -39,6 +39,9 @@ TW_INCLUDE_FBE_METADATA_DECRYPT := true
 TW_PREPARE_DATA_MEDIA_EARLY := true
 TW_FORCE_KEYMASTER_VER := true # Note that this is just a dummy value, because stock don't actually have keymaster, only keymint.
 
+# Android Verified Boot
+BOARD_AVB_ENABLE := false
+
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := s5e8845
 TARGET_NO_RADIOIMAGE := true
@@ -61,8 +64,6 @@ BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 
 # Crypto
 TW_INCLUDE_CRYPTO := true
-TW_INCLUDE_CRYPTO_FBE := true
-TW_SKIP_ADDITIONAL_FSTAB := true # Let recovery.fstab define in the tree be only source for fstab.
 
 # Debug
 TARGET_USES_LOGD := true
@@ -92,8 +93,11 @@ BOARD_KERNEL_BASE := 0x10000000
 BOARD_KERNEL_PAGESIZE:= 2048
 BOARD_RAMDISK_OFFSET := 0x00000000
 BOARD_KERNEL_TAGS_OFFSET := 0x00000000
-BOARD_KERNEL_CMDLINE += bootconfig loop.max_part=7
-TARGET_IS_64_BIT := true
+BOARD_KERNEL_CMDLINE += bootconfig
+BOARD_BOOTCONFIG := \
+    androidboot.serialconsole=0 \
+    buildtime_bootconfig=enable \
+    loop.max_part=7
 
 # Mkbootimg
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION) --board "SRPWK16A004"
@@ -101,6 +105,8 @@ BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
 
+# 64 Bit Compatibility
+TARGET_IS_64_BIT := true
 TARGET_BOARD_SUFFIX := _64                    # Remove if the device is 32-bit
 TARGET_USES_64_BIT_BINDER := true             # Remove if the device is 32-bit
 
@@ -139,7 +145,7 @@ TARGET_BOARD_PLATFORM := erd8845
 
 # Properties
 TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery.fstab
 
 # Recovery
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
@@ -200,11 +206,6 @@ TW_LOAD_VENDOR_BOOT_MODULES := true
 # Vendor Boot
 BOARD_MOVE_RECOVERY_RESOURCES_TO_VENDOR_BOOT := true
 BOARD_INCLUDE_RECOVERY_RAMDISK_IN_VENDOR_BOOT := true
-
-# Vendor Boot DLKM
-BOARD_VENDOR_RAMDISK_FRAGMENTS := dlkm
-BOARD_VENDOR_RAMDISK_FRAGMENT.dlkm.PREBUILT := $(DEVICE_PATH)/prebuilt/dlkm/vendor_ramdisk_dlkm.cpio.lz4
-BOARD_VENDOR_RAMDISK_FRAGMENT.dlkm.MKBOOTIMG_ARGS := --board_id2 0x0 --ramdisk_type DLKM
 
 # Workaround for copyout error
 TARGET_COPY_OUT_VENDOR := vendor
