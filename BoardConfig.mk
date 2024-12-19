@@ -35,6 +35,9 @@ TARGET_CPU_VARIANT := generic
 TARGET_CPU_VARIANT_RUNTIME := cortex-a76
 
 # Additional flags
+TW_INCLUDE_FBE_METADATA_DECRYPT := true
+TW_PREPARE_DATA_MEDIA_EARLY := true
+TW_SKIP_ADDITIONAL_FSTAB := true # Let recovery.fstab define in the tree be only source for fstab.
 TW_FORCE_KEYMASTER_VER := true # Note that this is just a dummy value, because stock don't actually have keymaster, only keymint.
 
 # Android Verified Boot
@@ -150,10 +153,6 @@ TARGET_USES_MKE2FS := true
 
 # Recovery
 TARGET_NO_RECOVERY := true
-
-# <Recovery TG>  #
-PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/recovery/root/init.recovery.samsung.rc
 
 # Ramdisk
 BOARD_RAMDISK_USE_LZ4 := true
