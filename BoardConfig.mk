@@ -138,7 +138,7 @@ BOARD_SAMSUNG_DYNAMIC_PARTITIONS_PARTITION_LIST := \
     vendor \
     odm \
     product \
-    system_dlkm
+    system_ext
 BOARD_SAMSUNG_DYNAMIC_PARTITIONS_SIZE := 9122611200 # TODO: Fix hardcoded value
 
 # GSI && GKI
