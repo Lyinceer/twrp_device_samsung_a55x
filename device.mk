@@ -48,7 +48,7 @@ PRODUCT_PACKAGES += \
     cppreopts.sh \
     update_engine \
     update_verifier \
-    update_engine_sideload \
+    update_engine_sideload
 
 # Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
@@ -61,7 +61,7 @@ PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
 	
 PRODUCT_PACKAGES += \
-    fstab.s5e8845 \
+    fstab.s5e8845
 
 # Vendor
 PRODUCT_PACKAGES += \
