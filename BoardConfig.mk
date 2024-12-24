@@ -35,6 +35,8 @@ TARGET_CPU_VARIANT := generic
 TARGET_CPU_VARIANT_RUNTIME := cortex-a76
 
 # Additional flags
+TW_INCLUDE_CRYPTO := true
+TW_INCLUDE_CRYPTO_FBE := true
 TW_INCLUDE_FBE_METADATA_DECRYPT := true
 TW_PREPARE_DATA_MEDIA_EARLY := true
 TW_SKIP_ADDITIONAL_FSTAB := true # Let recovery.fstab define in the tree be only source for fstab.
@@ -137,8 +139,8 @@ BOARD_SAMSUNG_DYNAMIC_PARTITIONS_PARTITION_LIST := \
     system \
     vendor \
     odm \
-    product \
-    system_ext
+    product 
+
 BOARD_SAMSUNG_DYNAMIC_PARTITIONS_SIZE := 9122611200 # TODO: Fix hardcoded value
 
 # GSI && GKI
@@ -162,6 +164,10 @@ TARGET_NO_RECOVERY := true
 
 # Ramdisk
 BOARD_RAMDISK_USE_LZ4 := true
+
+# <Recovery TG>  #
+PRODUCT_COPY_FILES += \
+    device/samsung/erd8845/recovery/init.recovery.samsung.rc:root/init.recovery.samsung.rc
 
 # SPL
 PLATFORM_VERSION := 99.87.36
@@ -209,3 +215,7 @@ BOARD_INCLUDE_RECOVERY_RAMDISK_IN_VENDOR_BOOT := true
 
 # Workaround for copyout error
 TARGET_COPY_OUT_VENDOR := vendor
+
+# remove /lib/modules in recovery ramdisk
+BOARD_RECOVERY_KERNEL_MODULES :=
+endif
