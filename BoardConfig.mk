@@ -34,9 +34,6 @@ TARGET_CPU_ABI2 :=
 TARGET_CPU_VARIANT := generic
 TARGET_CPU_VARIANT_RUNTIME := cortex-a76
 
-# Additional flags
-TW_FORCE_KEYMASTER_VER := true # Note that this is just a dummy value, because stock don't actually have keymaster, only keymint.
-
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := s5e8845
 TARGET_NO_RADIOIMAGE := true
@@ -86,7 +83,6 @@ BOARD_RAMDISK_OFFSET := 0x00000000
 BOARD_KERNEL_TAGS_OFFSET := 0x00000000
 BOARD_KERNEL_CMDLINE := \
     androidboot.serialconsole=0 \
-    buildtime_bootconfig=enable \
     loop.max_part=7
 
 # Mkbootimg
