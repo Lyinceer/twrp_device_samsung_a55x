@@ -84,7 +84,7 @@ BOARD_KERNEL_TAGS_OFFSET := 0x00000000
 BOARD_KERNEL_CMDLINE := \
     androidboot.serialconsole=0 \
     loop.max_part=7
-
+	
 # Mkbootimg
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION) --board "SRPWK16A004"
 BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
@@ -115,12 +115,7 @@ BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := erofs
 # Partitions - Super/Logical
 BOARD_SUPER_PARTITION_SIZE := 9691412404 # TODO: Fix hardcoded value
 BOARD_SUPER_PARTITION_GROUPS := samsung_dynamic_partitions
-BOARD_SAMSUNG_DYNAMIC_PARTITIONS_PARTITION_LIST := \
-    vendor_dlkm \
-    system \
-    vendor \
-    odm \
-    product 
+BOARD_SAMSUNG_DYNAMIC_PARTITIONS_PARTITION_LIST := system vendor vendor_dlkm product odm
 BOARD_SAMSUNG_DYNAMIC_PARTITIONS_SIZE := 9668067328 # TODO: Fix hardcoded value
 
 # GSI && GKI
@@ -175,7 +170,6 @@ TW_INCLUDE_RESETPROP := true
 TW_INCLUDE_LIBRESETPROP := true
 TW_INCLUDE_NTFS_3G := true
 TW_FORCE_KEYMASTER_VER := true
-TW_ENABLE_FS_COMPRESSION := true
 
 # TWRP Configuration - Vendor Modules
 TW_LOAD_VENDOR_BOOT_MODULES := true
