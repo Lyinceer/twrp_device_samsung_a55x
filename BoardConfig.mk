@@ -84,7 +84,7 @@ BOARD_KERNEL_TAGS_OFFSET := 0x00000000
 BOARD_KERNEL_CMDLINE := \
     androidboot.serialconsole=0 \
     loop.max_part=7
-	
+
 # Mkbootimg
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION) --board "SRPWK16A004"
 BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
@@ -169,7 +169,6 @@ TW_INCLUDE_FASTBOOTD := true
 TW_INCLUDE_RESETPROP := true
 TW_INCLUDE_LIBRESETPROP := true
 TW_INCLUDE_NTFS_3G := true
-TW_FORCE_KEYMASTER_VER := true
 
 # TWRP Configuration - Vendor Modules
 TW_LOAD_VENDOR_BOOT_MODULES := true
