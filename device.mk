@@ -53,11 +53,6 @@ PRODUCT_PACKAGES += \
 # Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
-# Recovery additional binaries
-TARGET_RECOVERY_DEVICE_MODULES += \
-    libion \
-    libxml2
-
 # Shipping level
 PRODUCT_SHIPPING_API_LEVEL := 32
 
@@ -68,12 +63,6 @@ PRODUCT_SOONG_NAMESPACES += \
 PRODUCT_PACKAGES += \
     fstab.s5e8845
 
-# Vendor
-PRODUCT_PACKAGES += \
-    mkshrc_vendor \
-    toybox_vendor \
-    sh_vendor
-	
 # Vendor Boot Platform
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/platform/fstab.s5e8845:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.s5e8845 \
