@@ -53,6 +53,11 @@ PRODUCT_PACKAGES += \
 # Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
+# Recovery additional binaries
+TARGET_RECOVERY_DEVICE_MODULES += \
+    libion \
+    libxml2
+
 # Shipping level
 PRODUCT_SHIPPING_API_LEVEL := 32
 
