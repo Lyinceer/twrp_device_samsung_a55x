@@ -146,10 +146,6 @@ TARGET_USES_MKE2FS := true
 # Ramdisk
 BOARD_RAMDISK_USE_LZ4 := true
 
-# <Recovery TG>  #
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/recovery/root/init.recovery.samsung.rc:root/init.recovery.samsung.rc
-
 # SPL
 PLATFORM_VERSION := 16.1.0
 PLATFORM_SECURITY_PATCH := 2099-12-31
