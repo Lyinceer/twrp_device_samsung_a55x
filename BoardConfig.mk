@@ -148,7 +148,7 @@ BOARD_RAMDISK_USE_LZ4 := true
 
 # <Recovery TG>  #
 PRODUCT_COPY_FILES += \
-    device/samsung/erd8845/recovery/init.recovery.samsung.rc:root/init.recovery.samsung.rc
+    $(LOCAL_PATH)/recovery/root/init.recovery.samsung.rc:root/init.recovery.samsung.rc
 
 # SPL
 PLATFORM_VERSION := 16.1.0
