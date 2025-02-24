@@ -12,9 +12,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/compression.mk)
 # Enable developer GSI keys
 $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 
-# Configure emulated_storage.mk
-$(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
-
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
     POSTINSTALL_PATH_system=system/bin/otapreopt_script \
@@ -45,6 +42,7 @@ PRODUCT_PACKAGES += \
     bootctrl.erd8845
 
 PRODUCT_PACKAGES += \
+	otapreopt_script \
     cppreopts.sh \
     update_engine \
     update_verifier \
@@ -59,9 +57,6 @@ PRODUCT_SHIPPING_API_LEVEL := 32
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
-	
-PRODUCT_PACKAGES += \
-    fstab.s5e8845
 
 # Vendor Boot Platform
 PRODUCT_COPY_FILES += \

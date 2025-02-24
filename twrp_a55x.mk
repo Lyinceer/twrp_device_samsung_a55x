@@ -15,6 +15,9 @@ $(call inherit-product, vendor/twrp/config/common.mk)
 # Inherit from a55x device
 $(call inherit-product, device/samsung/a55x/device.mk)
 
+# Enable project quotas and casefolding for emulated storage without sdcardfs
+$(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
+
 # Product Name
 PRODUCT_RELEASE_NAME := a55x
 PRODUCT_DEVICE := $(PRODUCT_RELEASE_NAME)
