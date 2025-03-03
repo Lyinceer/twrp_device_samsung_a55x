@@ -15,6 +15,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 # Enable project quotas and casefolding for emulated storage without sdcardfs
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
+# Inherit the proprietary files
+$(call inherit-product, vendor/samsung/essi/essi-vendor.mk)
+
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
     POSTINSTALL_PATH_system=system/bin/otapreopt_script \
@@ -33,9 +36,14 @@ PRODUCT_PACKAGES += \
 
 # Boot control HAL
 PRODUCT_PACKAGES += \
-    android.hardware.boot@1.2-impl-exynos \
-    android.hardware.boot@1.2-impl-exynos.recovery \
+    android.hardware.boot@1.2-impl \
+    android.hardware.boot@1.2-impl.recovery \
     android.hardware.boot@1.2-service
+
+# Health
+PRODUCT_PACKAGES += \
+    android.hardware.health@2.1-impl \
+    android.hardware.health@2.1-service
 
 PRODUCT_PACKAGES += \
     android.hardware.fastboot@1.0-impl-mock \
@@ -45,17 +53,22 @@ PRODUCT_PACKAGES += \
     bootctrl.erd8845
 
 PRODUCT_PACKAGES += \
-	otapreopt_script \
     cppreopts.sh \
     update_engine \
     update_verifier \
     update_engine_sideload
+	
+PRODUCT_PACKAGES += \
+    fstab.s5e8845 \
+
+# Overlays
+PRODUCT_ENFORCE_RRO_TARGETS := *
 
 # Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # Shipping level
-PRODUCT_SHIPPING_API_LEVEL := 32
+PRODUCT_SHIPPING_API_LEVEL := 34
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
@@ -63,8 +76,9 @@ PRODUCT_SOONG_NAMESPACES += \
 
 # Vendor Boot Platform
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/platform/fstab.s5e8845:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.s5e8845 \
-    $(LOCAL_PATH)/prebuilt/platform/fstab.s5e8845:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/fstab.s5e8845 \
+    PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/etc/fstab.s5e8845:$(TARGET_VENDOR_RAMDISK_OUT)/first_stage_ramdisk/fstab.s5e8845
+    $(LOCAL_PATH)/rootdir/etc/fstab.s5e8845:$(TARGET_VENDOR_RAMDISK_OUT)/fstab.s5e8845 \
     $(LOCAL_PATH)/prebuilt/platform/vangogh_lite_unified_evt0.bin:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/lib/firmware/sgpu/vangogh_lite_unified_evt0.bin \
     $(LOCAL_PATH)/prebuilt/platform/vangogh_lite_unified_evt0.bin:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/firmware/sgpu/vangogh_lite_unified_evt0.bin \
     $(LOCAL_PATH)/prebuilt/platform/gt9895_a55x.bin:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/vendor/firmware/tsp/gt9895_a55x.bin
