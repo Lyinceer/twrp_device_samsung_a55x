@@ -56,7 +56,7 @@ PRODUCT_PACKAGES += \
     update_engine_sideload
 	
 PRODUCT_PACKAGES += \
-    fstab.s5e8845 \
+    fstab.s5e8845
 
 # Overlays
 PRODUCT_ENFORCE_RRO_TARGETS := *
