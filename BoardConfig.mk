@@ -34,11 +34,6 @@ TARGET_CPU_ABI2 :=
 TARGET_CPU_VARIANT := generic
 TARGET_CPU_VARIANT_RUNTIME := cortex-a76
 
-# 64 Bit
-TARGET_USES_64_BIT_BINDER := true
-TARGET_SUPPORTS_64_BIT_APPS := true
-TARGET_IS_64_BIT := true
-
 # Additionals
 ENABLE_CPUSETS := true
 ENABLE_SCHEDBOOST := true
@@ -95,7 +90,7 @@ BOARD_KERNEL_CMDLINE := bootconfig loop.max_part=7
 
 # Mkbootimg
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION) --pagesize $(BOARD_KERNEL_PAGESIZE) --board "SRPWK16A006"
-BOARD_MKBOOTIMG_ARGS += --kernel_offset $(BOARD_KERNEL_OFFSET) --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
+BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB) --dtb_offset $(BOARD_DTB_OFFSET)
 
@@ -135,7 +130,7 @@ TARGET_BOARD_PLATFORM := erd8845
 # Properties
 TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
 TARGET_RECOVERY_INITRC := $(DEVICE_PATH)/recovery/root/init.recovery.s5e8845.rc
-TARGET_RECOVERY_INITRC := $(DEVICE_PATH)/recovery/root/init.recovery.teegris.rc
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
 
 # Recovery
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
