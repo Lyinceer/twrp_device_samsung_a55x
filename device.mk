@@ -73,7 +73,6 @@ PRODUCT_SOONG_NAMESPACES += \
 
 # Vendor Boot Platform
 PRODUCT_COPY_FILES += \
-    PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/fstab.s5e8845:$(TARGET_VENDOR_RAMDISK_OUT)/first_stage_ramdisk/fstab.s5e8845 \
     $(LOCAL_PATH)/rootdir/etc/fstab.s5e8845:$(TARGET_VENDOR_RAMDISK_OUT)/fstab.s5e8845 \
     $(LOCAL_PATH)/prebuilt/platform/vangogh_lite_unified_evt0.bin:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/lib/firmware/sgpu/vangogh_lite_unified_evt0.bin \
