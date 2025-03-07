@@ -5,7 +5,7 @@
 /vendor_boot    emmc  /dev/block/by-name/vendor_boot                flags=slotselect;backup=1;flashimg=1;display="Vendor Boot"
 /dtbo           emmc  /dev/block/by-name/dtbo                       flags=slotselect;backup=1;flashimg=1;display="DTBO"
 /vbmeta         emmc  /dev/block/by-name/vbmeta                     flags=slotselect;backup=1;flashimg;display="vbmeta"
-#/vbmeta_system	emmc  /dev/block/by-name/vbmeta_system	  	  		flags=display="vbmeta_system";slotselect;backup=1;flashimg=1
+/vbmeta_system	emmc  /dev/block/by-name/vbmeta_system	  	  		flags=display="vbmeta_system";slotselect;backup=1;flashimg=1
 /super			emmc  /dev/block/by-name/super		  	  			flags=display="Super";slotselect;backup=1;flashimg=1
 /sec_efs        ext4  /dev/block/bootdevice/by-name/sec_efs         flags=display="Sec_EFS";backup=1
 /slotinfo       emmc  /dev/block/by-name/slotinfo                   flags=backup=1;display="Slotinfo"
