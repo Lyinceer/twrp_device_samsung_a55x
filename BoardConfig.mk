@@ -125,7 +125,7 @@ TARGET_BOARD_PLATFORM := erd8845
 
 # Properties
 TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.s5e8845
 
 # Recovery
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
