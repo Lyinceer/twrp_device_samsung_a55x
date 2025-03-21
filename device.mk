@@ -58,9 +58,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     fstab.s5e8845
 
-# Overlays
-PRODUCT_ENFORCE_RRO_TARGETS := *
-
 # Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
