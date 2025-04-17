@@ -14,17 +14,20 @@
 /system_image   emmc  /dev/block/by-name/system       				flags=display="System_Image";backup=1;flashimg=1;slotselect
 /vendor_image   emmc  /dev/block/by-name/vendor      			 	flags=display="Vendor_Image";backup=1;flashimg=1;slotselect
 /product_image  emmc  /dev/block/by-name/product      				flags=display="Product_Image";backup=1;flashimg=1;slotselect
+/odm_image   emmc  /dev/block/by-name/odm        				flags=backup=1;flashimg;slotselect;display="ODM Image"
 
 #CSC
 /prism          ext4  /dev/block/by-name/prism                      flags=display="Prism";slotselect;backup=1;flashimg
 /optics         ext4  /dev/block/by-name/optics                     flags=display="Optics";slotselect;backup=1;flashimg
 
 # Data
-/data				f2fs		 /dev/block/by-name/userdata			flags=backup=1;slotselect;display="Userdata"
-/metadata			f2fs		 /dev/block/by-name/metadata			flags=backup=1;wipeingui;display="Metadata"
 /cache		  		ext4         /dev/block/by-name/cache            flags=display="Cache";backup=0
-/mnt/vendor/efs     ext4         /dev/block/by-name/efs              flags=display="EFS";backup=1
+/efs     ext4         /dev/block/by-name/efs              flags=display="EFS";backup=1
 /mnt/vendor/cpefs   ext4         /dev/block/by-name/cpefs            flags=display="CPEFS";backup=1
+
+# Samsung ODE (Knox DualDAR)
+# /keydata        ext4		/dev/block/bootdevice/by-name/keydata		flags=backup=1;display="Keydata";wipeduringfactoryreset
+/keyrefuge      ext4		/dev/block/bootdevice/by-name/keyrefuge		flags=backup=1;display="Keyrefuge";wipeduringfactoryreset
 
 # Param
 /up_param			emmc		 /dev/block/by-name/up_param			   flags=backup=1;display="Param"
