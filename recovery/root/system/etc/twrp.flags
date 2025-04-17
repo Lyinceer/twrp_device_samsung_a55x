@@ -1,0 +1,37 @@
+# Physical Partitions
+# Mount point
+/boot           emmc  /dev/block/by-name/boot                       flags=display="Boot";slotselect;backup=1;flashimg
+/init_boot      emmc  /dev/block/by-name/init_boot                  flags=slotselect;backup=1;flashimg=1;display="Init Boot"
+/vendor_boot    emmc  /dev/block/by-name/vendor_boot                flags=slotselect;backup=1;flashimg=1;display="Vendor Boot"
+/dtbo           emmc  /dev/block/by-name/dtbo                       flags=slotselect;backup=1;flashimg=1;display="DTBO"
+/vbmeta         emmc  /dev/block/by-name/vbmeta                     flags=slotselect;backup=1;flashimg;display="vbmeta"
+/vbmeta_system	emmc  /dev/block/by-name/vbmeta_system	  	  		flags=display="vbmeta_system";slotselect;backup=1;flashimg=1
+/super			emmc  /dev/block/by-name/super		  	  			flags=display="Super";slotselect;backup=1;flashimg=1
+/sec_efs        ext4  /dev/block/bootdevice/by-name/sec_efs         flags=display="Sec_EFS";backup=1
+/slotinfo       emmc  /dev/block/by-name/slotinfo                   flags=backup=1;display="Slotinfo"
+
+# Superimage Logical Partitions
+/system_image   emmc  /dev/block/by-name/system       				flags=display="System_Image";backup=1;flashimg=1;slotselect
+/vendor_image   emmc  /dev/block/by-name/vendor      			 	flags=display="Vendor_Image";backup=1;flashimg=1;slotselect
+/product_image  emmc  /dev/block/by-name/product      				flags=display="Product_Image";backup=1;flashimg=1;slotselect
+/odm_image   emmc  /dev/block/by-name/odm        				flags=backup=1;flashimg;slotselect;display="ODM Image"
+
+#CSC
+/prism          ext4  /dev/block/by-name/prism                      flags=display="Prism";slotselect;backup=1;flashimg
+/optics         ext4  /dev/block/by-name/optics                     flags=display="Optics";slotselect;backup=1;flashimg
+
+# Data
+/cache		  		ext4         /dev/block/by-name/cache            flags=display="Cache";backup=0
+/efs     ext4         /dev/block/by-name/efs              flags=display="EFS";backup=1
+/mnt/vendor/cpefs   ext4         /dev/block/by-name/cpefs            flags=display="CPEFS";backup=1
+
+# Samsung ODE (Knox DualDAR)
+# /keydata        ext4		/dev/block/bootdevice/by-name/keydata		flags=backup=1;display="Keydata";wipeduringfactoryreset
+/keyrefuge      ext4		/dev/block/bootdevice/by-name/keyrefuge		flags=backup=1;display="Keyrefuge";wipeduringfactoryreset
+
+# Param
+/up_param			emmc		 /dev/block/by-name/up_param			   flags=backup=1;display="Param"
+
+# External Stuff
+/external_sd        auto         /dev/block/mmcblk0p1 /dev/block/mmcblk0   flags=storage;wipeingui;removable
+/usb-otg            vfat         /dev/block/sde /dev/block/sde1            flags=display="USB-OTG";storage;wipeingui;removable
