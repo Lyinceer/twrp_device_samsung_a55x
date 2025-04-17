@@ -42,7 +42,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     cppreopts.sh \
-    otapreopt_script
+    otapreopt_script \
     checkpoint_gc \
     update_engine \
     update_verifier \
