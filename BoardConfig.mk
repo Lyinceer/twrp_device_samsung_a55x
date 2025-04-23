@@ -142,6 +142,24 @@ TARGET_BOARD_PLATFORM := erd8845
 # Properties
 TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery.fstab
+TARGET_RECOVERY_DEVICE_MODULES += \
+android.hardware.gatekeeper-V1-ndk \
+android.hardware.security.keymint-V3-ndk \
+android.hardware.security.rkp-V3-ndk \
+android.hardware.security.secureclock-V1-ndk \
+android.hardware.security.sharedsecret-V1-ndk \
+libhermes \
+libsecril-client \
+libsec_esek \
+libsec_semHalTlc \
+libsec_semRil \
+libskeymint10device \
+libskeymint_cli \
+libspictrl \
+libteecl \
+libuuid \
+vendor.samsung.hardware.keymint-V3-ndk \
+vendor.samsung.hardware.security.sem@1.0
 
 # Recovery
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
@@ -170,11 +188,19 @@ TW_EXTRA_LANGUAGES := true
 TW_SCREEN_BLANK_ON_BOOT := true
 TW_USE_TOOLBOX := true
 TW_HAS_DOWNLOAD_MODE := true
+TW_HAS_NO_RECOVERY_PARTITION := true
 TW_MAX_BRIGHTNESS := 200
 TW_NO_LEGACY_PROPS := true
 TW_NO_REBOOT_BOOTLOADER := true
 TW_PREPARE_DATA_MEDIA_EARLY := true
 TW_ENABLE_FS_COMPRESSION := true
+TW_USE_EXTERNAL_STORAGE := true
+TW_NO_FLASH_CURRENT_TWRP := true
+TARGET_RECOVERY_DEVICE_DIRS += device/samsung/a55x
+TW_INTERNAL_STORAGE_PATH := /data/media/0
+TW_INTERNAL_STORAGE_MOUNT_POINT := /mnt/media_rw/sdcard0
+TW_EXTERNAL_STORAGE_PATH := /sdcard
+TW_EXTERNAL_STORAGE_MOUNT_POINT := /storage/emulated/0
 
 # TWRP Configuration - Version
 TW_DEVICE_VERSION := Lyinceer_02
@@ -195,7 +221,6 @@ TW_INCLUDE_REPACKTOOLS := true
 TW_INCLUDE_NTFS_3G := true
 TW_INCLUDE_LPDUMP := true
 TW_INCLUDE_LPTOOLS := true
-TW_FORCE_KEYMASTER_VER := true
 TW_INCLUDE_FBE_METADATA_DECRYPT := true
 
 # TWRP Configuration - Vendor Modules
