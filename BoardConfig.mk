@@ -75,7 +75,6 @@ TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilts/dtb.img             # Vendor Boo
 # Kernel - Image
 BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_USES_GENERIC_KERNEL_IMAGE := true
-BOARD_KERNEL_SEPARATED_DTBO := true
 
 # Kernel - prebuilt
 TARGET_FORCE_PREBUILT_KERNEL := false
@@ -83,7 +82,7 @@ ifeq ($(TARGET_FORCE_PREBUILT_KERNEL),true)
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilts/Image
 BOARD_INCLUDE_DTB_IN_BOOTIMG := 
 BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilts/dtbo.img
-BOARD_KERNEL_SEPARATED_DTBO := 
+BOARD_KERNEL_SEPARATED_DTBO := true
 endif
 
 # Kernel
@@ -128,10 +127,10 @@ BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := f2fs
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := erofs
 
 # Partitions - Super/Logical
-BOARD_SUPER_PARTITION_SIZE := 9126805504 # TODO: Fix hardcoded value
+BOARD_SUPER_PARTITION_SIZE := 13421772800 # Based on dynamic_partitions_info.txt
 BOARD_SUPER_PARTITION_GROUPS := samsung_dynamic_partitions
 BOARD_SAMSUNG_DYNAMIC_PARTITIONS_PARTITION_LIST := system vendor vendor_dlkm product odm
-BOARD_SAMSUNG_DYNAMIC_PARTITIONS_SIZE := 9122611200 # TODO: Fix hardcoded value
+BOARD_SAMSUNG_DYNAMIC_PARTITIONS_SIZE := 13417578496 # Based on dynamic_partitions_info.txt
 
 # GSI && GKI
 BOARD_MOVE_GSI_AVB_KEYS_TO_VENDOR_BOOT := true
@@ -142,24 +141,6 @@ TARGET_BOARD_PLATFORM := erd8845
 # Properties
 TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery.fstab
-TARGET_RECOVERY_DEVICE_MODULES += \
-android.hardware.gatekeeper-V1-ndk \
-android.hardware.security.keymint-V3-ndk \
-android.hardware.security.rkp-V3-ndk \
-android.hardware.security.secureclock-V1-ndk \
-android.hardware.security.sharedsecret-V1-ndk \
-libhermes \
-libsecril-client \
-libsec_esek \
-libsec_semHalTlc \
-libsec_semRil \
-libskeymint10device \
-libskeymint_cli \
-libspictrl \
-libteecl \
-libuuid \
-vendor.samsung.hardware.keymint-V3-ndk \
-vendor.samsung.hardware.security.sem@1.0
 
 # Recovery
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
@@ -167,9 +148,6 @@ TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 TARGET_USES_MKE2FS := true
 RECOVERY_SDCARD_ON_DATA := true
-
-# Recovery
-TARGET_NO_RECOVERY := true
 
 # Ramdisk
 BOARD_RAMDISK_USE_LZ4 := true
@@ -196,7 +174,6 @@ TW_PREPARE_DATA_MEDIA_EARLY := true
 TW_ENABLE_FS_COMPRESSION := true
 TW_USE_EXTERNAL_STORAGE := true
 TW_NO_FLASH_CURRENT_TWRP := true
-TARGET_RECOVERY_DEVICE_DIRS += device/samsung/a55x
 TW_INTERNAL_STORAGE_PATH := /data/media/0
 TW_INTERNAL_STORAGE_MOUNT_POINT := /mnt/media_rw/sdcard0
 TW_EXTERNAL_STORAGE_PATH := /sdcard
@@ -240,6 +217,3 @@ BOARD_AVB_VENDOR_BOOT_ROLLBACK_INDEX_LOCATION := 1
 
 # Workaround for copyout error
 TARGET_COPY_OUT_VENDOR := vendor
-
-# VINTF
-DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/manifest.xml
