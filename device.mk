@@ -20,12 +20,6 @@ AB_OTA_POSTINSTALL_CONFIG += \
     POSTINSTALL_PATH_system=system/bin/otapreopt_script \
     FILESYSTEM_TYPE_system=erofs \
     POSTINSTALL_OPTIONAL_system=true
-	
-AB_OTA_POSTINSTALL_CONFIG += \
-    RUN_POSTINSTALL_vendor=true \
-    POSTINSTALL_PATH_vendor=bin/checkpoint_gc \
-    FILESYSTEM_TYPE_vendor=erofs \
-    POSTINSTALL_OPTIONAL_vendor=true
 
 # Boot control HAL
 PRODUCT_PACKAGES += \
@@ -43,7 +37,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     cppreopts.sh \
     otapreopt_script \
-    checkpoint_gc \
     update_engine \
     update_verifier \
     update_engine_sideload
@@ -57,3 +50,8 @@ PRODUCT_SHIPPING_API_LEVEL := 32
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
+
+# Vendor Boot Platform
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilts/platform/fstab.s5e8845:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.s5e8845 \
+    $(LOCAL_PATH)/prebuilts/platform/fstab.s5e8845:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/fstab.s5e8845 \
