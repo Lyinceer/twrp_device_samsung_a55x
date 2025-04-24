@@ -54,4 +54,4 @@ PRODUCT_SOONG_NAMESPACES += \
 # Vendor Boot Platform
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilts/platform/fstab.s5e8845:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.s5e8845 \
-    $(LOCAL_PATH)/prebuilts/platform/fstab.s5e8845:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/fstab.s5e8845 \
+    $(LOCAL_PATH)/prebuilts/platform/fstab.s5e8845:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/fstab.s5e8845
