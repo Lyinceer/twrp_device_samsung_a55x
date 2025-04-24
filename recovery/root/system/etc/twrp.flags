@@ -1,5 +1,6 @@
 # Physical Partitions
 # Mount point
+/data           f2fs  /dev/block/by-name/userdata                   flags=display="Userdata";backup=1
 /boot           emmc  /dev/block/by-name/boot                       flags=display="Boot";slotselect;backup=1;flashimg
 /init_boot      emmc  /dev/block/by-name/init_boot                  flags=slotselect;backup=1;flashimg=1;display="Init Boot"
 /vendor_boot    emmc  /dev/block/by-name/vendor_boot                flags=slotselect;backup=1;flashimg=1;display="Vendor Boot"
