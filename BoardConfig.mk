@@ -178,6 +178,7 @@ TW_INTERNAL_STORAGE_PATH := /data/media/0
 TW_INTERNAL_STORAGE_MOUNT_POINT := /mnt/media_rw/sdcard0
 TW_EXTERNAL_STORAGE_PATH := /sdcard
 TW_EXTERNAL_STORAGE_MOUNT_POINT := /storage/emulated/0
+TW_SKIP_ADDITIONAL_FSTAB := true # Let recovery.fstab define in the tree be only source for fstab.
 
 # TWRP Configuration - Version
 TW_DEVICE_VERSION := Lyinceer_02
