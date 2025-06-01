@@ -26,10 +26,6 @@
 /efs     ext4         /dev/block/by-name/efs              flags=display="EFS";backup=1
 /mnt/vendor/cpefs   ext4         /dev/block/by-name/cpefs            flags=display="CPEFS";backup=1
 
-# Samsung ODE (Knox DualDAR)
-# /keydata        ext4		/dev/block/bootdevice/by-name/keydata		flags=backup=1;display="Keydata";wipeduringfactoryreset
-/keyrefuge      ext4		/dev/block/bootdevice/by-name/keyrefuge		flags=backup=1;display="Keyrefuge";wipeduringfactoryreset
-
 # Param
 /up_param			emmc		 /dev/block/by-name/up_param			   flags=backup=1;display="Param"
 
