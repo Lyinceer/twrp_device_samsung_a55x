@@ -43,6 +43,3 @@ odm	/odm	erofs	ro	slotselect,wait,logical,first_stage_mount,avb
 #CSC
 /dev/block/by-name/prism	/prism	ext4	ro,barrier=1	slotselect,nofail,avb,first_stage_mount
 /dev/block/by-name/optics	/optics	ext4	ro,barrier=1	slotselect,nofail,avb,first_stage_mount
-
-# RECOVERY
-/dev/block/by-name/sec_efs	/efs	ext4	defaults	recoveryonly
