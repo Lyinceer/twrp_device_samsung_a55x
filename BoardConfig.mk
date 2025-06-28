@@ -34,12 +34,6 @@ TARGET_CPU_ABI2 :=
 TARGET_CPU_VARIANT := generic
 TARGET_CPU_VARIANT_RUNTIME := cortex-a76
 
-# Bootloader
-TARGET_BOOTLOADER_BOARD_NAME := s5e8845
-TARGET_NO_RADIOIMAGE := true
-TARGET_NO_BOOTLOADER := true
-TARGET_USES_UEFI     := true
-
 # Board
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_HAS_LARGE_FILESYSTEM := true
@@ -164,8 +158,13 @@ TW_NO_REBOOT_BOOTLOADER := true
 TW_PREPARE_DATA_MEDIA_EARLY := true
 TW_SKIP_ADDITIONAL_FSTAB := true # Let recovery.fstab define in the tree be only source for fstab.
 
+# TWRP Configuration - UI alignment for punch-hole displays
+TW_STATUS_BAR_HEIGHT := 130
+TW_Y_OFFSET := 140
+TW_H_OFFSET := -140
+
 # TWRP Configuration - Version
-TW_DEVICE_VERSION := Lyinceer_03
+TW_DEVICE_VERSION := Lyinceer_04
 
 # TWRP Configuration - Excludes
 TW_EXCLUDE_APEX := true
