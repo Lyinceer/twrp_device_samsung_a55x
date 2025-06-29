@@ -156,7 +156,6 @@ TW_MAX_BRIGHTNESS := 200
 TW_NO_LEGACY_PROPS := true
 TW_NO_REBOOT_BOOTLOADER := true
 TW_PREPARE_DATA_MEDIA_EARLY := true
-TW_SKIP_ADDITIONAL_FSTAB := true # Let recovery.fstab define in the tree be only source for fstab.
 
 # TWRP Configuration - UI alignment for punch-hole displays
 TW_STATUS_BAR_HEIGHT := 130
