@@ -35,8 +35,8 @@ PRODUCT_PACKAGES += \
     bootctrl.erd8845
 
 PRODUCT_PACKAGES += \
-    cppreopts.sh \
     otapreopt_script \
+	cppreopts.sh \
     update_engine \
     update_verifier \
     update_engine_sideload
