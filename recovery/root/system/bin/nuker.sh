@@ -3,6 +3,21 @@
 # Licensed under CC BY-NC-SA 4.0
 # https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
 
+# Checks if /data is already decrypted
+mount /vendor
+
+FSTAB_PATH="/vendor/etc/fstab.s5e8845"
+
+if [ -f "$FSTAB_PATH" ] && ! grep -q fileencryption "$FSTAB_PATH"; then
+  echo "[+] Already patched. Skipping nuker."
+  umount /vendor
+  exit 0
+fi
+
+umount /vendor
+
+sleep 5
+
 # Format userdata
 umount /data
 sleep 5
@@ -80,7 +95,7 @@ METASLOTS=$(/system/bin/lpdump /dev/block/by-name/super | awk '/Metadata slot co
   --metadata-size 65536 \
   --metadata-slots "$METASLOTS" \
   --super-name super \
-  --device super:"$SUPER_SIZE" \
+  --device super:$SUPER_SIZE \
   $LPMARGS \
   --output /data/local/tmp/super_fixed.img || exit 1
 
