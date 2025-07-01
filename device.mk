@@ -12,7 +12,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/compression.mk)
 # Enable developer GSI keys
 $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 
-# Enable project quotas and casefolding for emulated storage without sdcardfs
+# Configure emulated_storage.mk
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
 AB_OTA_POSTINSTALL_CONFIG += \
@@ -36,7 +36,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     otapreopt_script \
-	cppreopts.sh \
+    cppreopts.sh \
     update_engine \
     update_verifier \
     update_engine_sideload
@@ -50,3 +50,7 @@ PRODUCT_SHIPPING_API_LEVEL := 32
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
+
+# Decryption
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilt/platform/openrecoveryscript:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/cache/recovery/openrecoveryscript
