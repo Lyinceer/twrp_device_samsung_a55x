@@ -15,9 +15,6 @@ on boot
 on post-fs-data
     mkdir /data/vendor/gatekeeper 0770 root root
 
-on post-fs
-    export PS1 'a55x\\w# '
-
 on property:sys.usb.ffs.ready=1
     start nuker
 
