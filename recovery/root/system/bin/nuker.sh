@@ -108,4 +108,6 @@ rm -rf /data/local/tmp/*
 rm -rf /tmp/*
 mkdir -p /data/media
 
+echo "[+] Decryption completed successfully."
+
 exit 0

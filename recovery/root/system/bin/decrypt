@@ -1,0 +1,3 @@
+#!/system/bin/sh
+echo "[*] Nuker service started."
+/system/bin/nuker.sh
