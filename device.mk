@@ -50,7 +50,3 @@ PRODUCT_SHIPPING_API_LEVEL := 32
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
-
-# Decryption
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/platform/openrecoveryscript:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/cache/recovery/openrecoveryscript
